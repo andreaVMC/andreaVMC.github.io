@@ -1,0 +1,100 @@
+:root{
+    --sfondo:rgb(186, 128, 204);
+    --primary:rgb(171, 64, 204);
+    --primaryButDarker:rgb(129, 49, 153);
+    --text:rgb(36, 36, 36);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Sono:wght@600&display=swap');
+
+
+
+@font-face {
+    font-family: 'Demode Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Demode Regular'), url('../fonts/Demode.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pokemon';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Pokemon'), url('../fonts/pokemon.woff') format('woff');
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: var(--sfondo);
+}
+
+.first-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.github{
+    display: inline-block;
+    justify-content: flex-end;
+    margin: 2% 2% 0% 0%;
+}
+
+.github-link{
+    font-family: "Pokemon";
+    color: var(--text);
+    font-size: 80%;
+    text-align: center;
+    font-weight:bolder;
+    justify-content: flex-end;
+    background-size: 200% auto;
+    float: right;
+    padding: 0.5% 1% 0.5% 1%;
+    margin: 0% 2% 0% 0%;
+    border-radius: 7px;
+    border-color: var(--primaryButDarker);
+    color: var(--text);
+    cursor: pointer;
+    background-image: linear-gradient(to right, var(--primary) 0%, var(--sfondo) 51%, var(--primary) 100%);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.github-link:hover{
+    background-position: right center;
+    padding: 0.5% 2% 0.5% 2%;
+    margin-right: 1%;
+}
+
+.git-ico{
+    float: right;
+}
+
+.second-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.title{
+    font-family:'Demode Regular';
+    color: var(--text);
+    padding: 2% 2% 0% 2%;
+    font-size: 220px;
+    font-weight: 400;
+    text-shadow: 5px 5px 135px black;
+    display:inline-block;
+    flex-grow: 1;
+}
+
+.hello-img{
+    display: inline-block;
+    width: 35%;
+    align-self: flex-end;
+    filter: drop-shadow(20px 20px 20px black);
+}
