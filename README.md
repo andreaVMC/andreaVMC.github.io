@@ -1,2 +1,2 @@
 # OSwebsite
-open source web site, were i will make test, and upload usefull things
+open source website, where I will make tests and upload useful things.
