@@ -1,236 +1,136 @@
+@import url("/font/San Francisco/SF.css"); /* San Francisco */
+
 :root{
-    --sfondo:rgb(186, 128, 204);
-    --primary:rgb(171, 64, 204);
-    --primaryButDarker:rgb(129, 49, 153);
-    --text:rgb(36, 36, 36);
+    --mainFont: 'San Francisco', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    /* palette chiara*/
+    /*
+    --sfondo: #fff;
+    --text: #000;
+    --contrasto: #682bd7;
+    --contrasto-secondario: #a37cf0;
+    --text-trs: #000000bb;
+    */
+    /*---palette scura-- (default)*/
+    --sfondo: #393E46;
+    --text: #fff;
+    --contrasto: #682bd7;
+    --contrasto-secondario: #a37cf0;
+    --text-trs: #ffffffbb;
 }
 
-::-webkit-scrollbar{
-    background-color: var(--sfondo);
-    width: 0.8em;
+.andrea{
+    cursor:pointer;
+    color: var(--sfondo);
+    overflow: hidden;
+    background: linear-gradient(to right, var(--contrasto-secondario), var(--contrasto-secondario) 50%, var(--sfondo) 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+    -webkit-transition: background-position 275ms ease;
+    -moz-transition: background-position 275ms ease;
+    -ms-transition: background-position 275ms ease;
+    -o-transition: background-position 275ms ease;
 }
-
-::-webkit-scrollbar-thumb{
-    background-color: var(--primary);
-    border-radius: 10px;
-    min-width: 0.6em;
-}
-::-webkit-scrollbar-thumb:active, ::-webkit-scrollbar-thumb:hover{
-    background-color: var(--primaryButDarker);
-    border-radius: 10px;
-    min-width: 0.6em;
-}
-
-
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Sono:wght@600&display=swap');
-
-
-
-@font-face {
-    font-family: 'Demode Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Demode Regular'), url('../fonts/Demode.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Pokemon';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Pokemon'), url('../fonts/pokemon.woff') format('woff');
+.andrea:hover{
+    background-position: 0 100%;
 }
 
 body{
+    font-family: var(--mainFont);
     width: 100%;
     height: 100vh;
+    border: 0;
     margin: 0;
-    padding: 0;
-    background-color: var(--sfondo);
     overflow-x: hidden;
+    background-color: var(--sfondo);
+    transition-duration: 0.3s;
 }
 
-.first-container{
+.front-page{
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.navbar{
+    z-index: 2;
     width: 100%;
-}
-
-.github{
-    display: inline-block;
-    justify-content: flex-end;
-    margin: 2% 2% 0% 0%;
-}
-
-.github-link{
-    font-family: "Pokemon";
-    color: var(--text);
-    font-size: 80%;
-    text-align: center;
-    font-weight:bolder;
-    justify-content: flex-end;
-    background-size: 200% auto;
-    float: right;
-    padding: 0.5% 1% 0.5% 1%;
-    margin: 0% 2% 0% 0%;
-    border-radius: 7px;
-    border-color: var(--primaryButDarker);
-    color: var(--text);
-    cursor: pointer;
-    background-image: linear-gradient(to right, var(--primary) 0%, var(--sfondo) 51%, var(--primary) 100%);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-.github-link:hover{
-    background-position: right center;
-}
-
-.git-ico{
-    float: right;
-}
-
-.first-container-first-subcontainer{
-    width: 100%;
-    height: 100vh;
+    height:6vh;
+    justify-self: flex-start;
+    backdrop-filter: blur(15px);
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
-.title{
-    font-family:'Demode Regular';
-    color: var(--text);
-    padding: 2% 2% 0% 2%;
-    font-size: 11vW;
-    font-weight: 400;
-    text-shadow: 5px 5px 45px black;
-    display:inline-block;
-    flex-grow: 1;
-    transition-duration: 0.5s;
+.logo-container{
+    display: flex;
+    align-items: center;
+    width:50%;
+    height: 6vh;
 }
 
-.hello-img{
-    display: inline-block;
-    max-width: 35%;
-    align-self:center;
-    filter: drop-shadow(20px 20px 20px black);
+.nav-option-container{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    width:50%;
+    height: 6vh;
 }
 
-.second-container{
+.nav-option-container p{
+    margin:auto;
+    text-align: right;
+    font-size: 1vw;
+    font-weight: 700;
+    color:var(--text);
+    transition-duration:0.3s;
+    cursor:pointer;
+}
+
+.nav-option-container p:hover{
+    font-size: 1.05vW;
+    color:var(--contrasto-secondario);
+}
+
+.background{
     width: 100%;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    position: absolute;
+    z-index: 0;
 }
 
-.navigation{
-    text-align: center;
-    font-family: 'Pokemon';
-    margin: 0.5% 0% 0% 0%;
-    font-size: 5vW;
-}
-
-.div-archivio-scolastico{
-    display: block;
-    margin: 4% 0% 0% 0%;
-    align-self: center;
-    justify-content: center;
-    width: 60%;
-}
-
-.archivio-scolastico{
-    font-family: "Pokemon";
-    color: var(--text);
-    font-size: 0.7vW;
-    text-align: center;
-    font-weight:bolder;
-    background-size: 200% auto;
-    padding: 1% 1% 1% 1%;
+.modello-3D{
     width: 100%;
-    border-radius: 7px;
-    border-color: var(--primaryButDarker);
-    color: var(--text);
+    height: 100%;
+}
+
+.text-frontpage{
+    font-family: var(--mainFont);
+    color: var(--text-trs);
+    font-size: 10vW;
+    font-weight: 900;
+    z-index: 2;
+}
+
+.scendi{
+    z-index: 2;
+    font-size: 5vw;
+    justify-self: flex-end;
+    margin-bottom: 2%;
     cursor: pointer;
-    background-image: linear-gradient(to right, var(--primary) 0%, var(--sfondo) 51%, var(--primary) 100%);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    transition-duration: 0.2s;
+    color: var(--text-trs);
+    font-weight: 900;
+    z-index: 2;
 }
 
-.archivio-scolastico:hover{
-    background-position: right center;
-    border-radius: 15px;
+.scendi:hover{
+    color:var(--contrasto-secondario);
 }
 
-@media screen and (max-width: 1080px){
-    .first-container{
-        border: 3px solid red;
-        display: flex;
-        flex-direction: column;
-        width: 99%;
-    }
-    
-    .github{
-        border: 3px solid blue;
-        display: inline-block;
-        margin: 1% 0% 0% 0%;
-    }
-    
-    .github-link{
-        font-family: "Pokemon";
-        color: var(--text);
-        font-size: 200%;
-        text-align: center;
-        font-weight:bolder;
-        background-size: 200% auto;
-        padding: 3% 10% 3% 10%;
-        margin: 0% 2% 0% 2%;
-        border-radius: 100px;
-        border-color: transparent;
-        color: var(--text);
-        cursor: pointer;
-        float: left;
-        width: 96%;
-        background-image: linear-gradient(to right, var(--primary) 0%, var(--sfondo) 51%, var(--primary) 100%);
-        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    }
-    
-    .github-link:hover{
-        background-position: right center;
-    }
-    
-    .git-ico{
-        width: 5%;
-    }
-    
-    .first-container-first-subcontainer{
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: row;
-    }
-    
-    .title{
-        font-family:'Demode Regular';
-        color: var(--text);
-        padding: 2% 2% 0% 2%;
-        font-size: 11vW;
-        font-weight: 400;
-        text-shadow: 5px 5px 45px black;
-        display:inline-block;
-        flex-grow: 1;
-        transition-duration: 0.5s;
-    }
-    
-    .hello-img{
-        display: inline-block;
-        max-width: 35%;
-        align-self:center;
-        filter: drop-shadow(20px 20px 20px black);
-    }
-    
-    .second-container{
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-}

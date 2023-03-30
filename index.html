@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>andreaVMC website</title>
-        <link rel="stylesheet" href="CSS/index.css">
-        <script src="JS/index.js"></script>
+        <title>Andrea Vaccaro</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+        <link rel="stylesheet" href="CSS/index.css">
+        <link rel="stylesheet" href="CSS/dark-ligh.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
     </head>
     <body>
-        <div class="first-container">
-            <div class="github"><button class="github-link" onclick="gitHub()">GitHub<img class="git-ico" src="IMG/gitico.png" ></button></div>
-            <div class="first-container-first-subcontainer">
-                <div class="title">
-                    Welcome<br>in to this<br>web-site
+        <div class="front-page">
+            <div class="navbar">
+                <div class="logo-container">logo</div>
+                <div class="nav-option-container">
+                    <p>GitHub</p>
+                    <p>Conoscimi</p>
+                    <p>Cosa faccio</p>
+                    <p>Archivio</p>
+                    <p>Contattami</p>
+                    <p>
+                        <label class="switch">
+                            <input type="checkbox" class="theme">
+                            <span class="slider"></span>
+                        </label>
+                    </p>
                 </div>
-                <img class="hello-img" src="IMG/hello-illustration.png">
             </div>
+            <div class="background">
+                <model-viewer src="model3D/scene.gltf" orientation="-10deg 10deg -30deg" camera-orbit="auto auto 2.7m" scale="1 1 1" alt="VR Headset" auto-rotate ar ios-src="assets/scene.gltf" class="modello-3D"></model-viewer>
+            </div>
+            <div class="text-frontpage">It's <cliccabile class="andrea">Andrea</cliccabile> here</div>
+            <a class="scendi">&#8964;</a>
         </div>
-
-        <div class="second-container">
-            <div class="navigation">Navigation</div>
-            <div class="div-archivio-scolastico"><button class="basic-button archivio-scolastico" onclick="scuola()">Archivio scolastico</button></div>
-            <div class="div-archivio-scolastico"><button class="basic-button archivio-scolastico"><a href="stack&heap/stack---heap/index.html">Stack & heap</a></button></div>
-            <div class="div-archivio-scolastico"><button class="basic-button archivio-scolastico">Curriculum</button></div>
-            <div class="div-archivio-scolastico"><button class="basic-button archivio-scolastico">Contatti</button></div>
-            <div class="div-archivio-scolastico"><button class="basic-button archivio-scolastico">Useful things</button></div>
-            <div class="div-archivio-scolastico"><button class="basic-button archivio-scolastico">Other things</button></div>
-        </div>
-        <!--<div>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>-->
     </body>
+    <script src="JS/index.js"></script>
 </html>
