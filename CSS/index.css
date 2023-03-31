@@ -64,9 +64,12 @@ body{
     height:6vh;
     justify-self: flex-start;
     backdrop-filter: blur(15px);
+    filter: blur(0);
     display: flex;
     flex-direction: row;
     align-items: center;
+    -webkit-filter: blur(0);
+    background-color: #a37cf07e;
 }
 
 .logo-container{
