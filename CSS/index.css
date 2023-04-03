@@ -18,6 +18,10 @@
     --text-trs: #ffffffbb;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 .andrea{
     cursor:pointer;
     color: var(--sfondo);
@@ -131,9 +135,25 @@ body{
     color: var(--text-trs);
     font-weight: 900;
     z-index: 2;
+    text-decoration: none;
 }
 
 .scendi:hover{
     color:var(--contrasto-secondario);
 }
 
+.content{
+    height: 100vh;
+    position: relative;
+}
+
+.content video {
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.archivio{
+    height: 100vh;
+}
