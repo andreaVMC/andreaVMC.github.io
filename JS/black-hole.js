@@ -1,14 +1,14 @@
 const intro = document.querySelector(".content");
 const video = intro.querySelector("video");
-const text = intro.querySelector(".titolo-principale");
-const text2 = intro.querySelector(".conoscimi1");
+const text = intro.querySelector(".titolo");
+const text2 = intro.querySelector(".capitolo");
+const text3 = intro.querySelector(".capitolo2");
 //END SECTION
 const section = document.querySelector(".archivio");
 const end = section.querySelector("h1");
 
 //SCROLLMAGIC
 const controller = new ScrollMagic.Controller();
-
 //Scenes
 let scene = new ScrollMagic.Scene({
   duration: 24000,
@@ -19,15 +19,24 @@ let scene = new ScrollMagic.Scene({
   .addTo(controller);
 
 //Text Animation
-    /*let scene2 = new ScrollMagic.Scene({ //titolo grande iniziale
+    let scene2 = new ScrollMagic.Scene({ //titolo grande iniziale
         duration: 3000,
         triggerElement: intro,
         triggerHook: 0
     })
         .setTween(TweenMax.fromTo(text, 3, { opacity: 1 }, { opacity: 0 }))
         .addTo(controller);
-
     let scene3 = new ScrollMagic.Scene({ //appare prima parte conoscimi
+          duration: 3000,
+          triggerElement: intro,
+          offset: 0,
+          triggerHook: 0
+    })
+          .setTween(TweenMax.fromTo(text2, 3, { opacity:  0}, { opacity: 1 },))
+          .addTo(controller);
+
+
+    let scene4 = new ScrollMagic.Scene({ //appare prima parte conoscimi
         duration: 3000,
         triggerElement: intro,
         offset: 3000,
@@ -36,6 +45,16 @@ let scene = new ScrollMagic.Scene({
         .setTween(TweenMax.fromTo(text2, 3, { opacity: 0 }, { opacity: 1 },))
         .addTo(controller);
 
+    let scene5 = new ScrollMagic.Scene({ //appare prima parte conoscimi
+          duration: 3000,
+          triggerElement: intro,
+          offset: 6000,
+          triggerHook: 0,
+      })
+        .addIndicators()
+          .setTween(TweenMax.fromTo(text2, 3, { opacity: 1 }, { opacity: 0 },))
+          .addTo(controller);
+        /*
     let scene4 = new ScrollMagic.Scene({ //appare prima parte conoscimi
       duration: 3000,
       triggerElement: intro,
@@ -44,11 +63,8 @@ let scene = new ScrollMagic.Scene({
     })
     .addIndicators()
         .setTween(TweenMax.fromTo(text2, 3, { opacity: 1 }, { opacity: 0 },))
-        .addTo(controller);
-*/        
-
-
-
+        .addTo(controller);    
+*/
 
 //Video Animation
 let accelamount = 0.1;

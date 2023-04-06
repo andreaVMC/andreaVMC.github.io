@@ -147,6 +147,19 @@ body{
     position: relative;
 }
 
+.content h1, .capitolo, .capitolo2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    color: white;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
 .content video {
     z-index: 0;
     height: 100%;
