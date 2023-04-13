@@ -60,6 +60,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content:space-between;
+    z-index: 99;
 }
 
 .navbar{
@@ -155,6 +156,7 @@ body{
     justify-content: center;
     width: 100%;
     height: 100vh;
+    z-index: 1;
 }
 
 .conoscimi > .frontpage > h1{
@@ -192,7 +194,6 @@ body{
     -ms-transform: translateY(20vh);
     -o-transform: translateY(20vh);
     font-weight: 900;
-    transition-duration: 0.2s;
     text-decoration: none;
 }
 

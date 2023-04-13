@@ -14,6 +14,6 @@ window.addEventListener('scroll',function(){
     blackhole.style.left = (value*0.25)+"px";
     pianeti.style.left = -(value*0.25-200)+"px";
     satelliti.style.left = -(value*0.25-200)+"px";
-    testo.style.top = -(value*0.25-300)+"px";
-    bottone.style.top = -(value*0.25-650)+"px";
+    testo.style.top = -(value*0.03-35)+"vh";
+    bottone.style.top = -(value*0.03-80)+"vh";
 });
