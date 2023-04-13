@@ -1,0 +1,337 @@
+body
+{
+    position: fixed; 
+    overflow-y: hidden; 
+    width: 100%;
+    height: 100vh;
+}
+
+button{
+    font-size: 100%;
+    font-family: fantasy;
+    border-radius: 15px;
+    border-color: transparent; 
+}
+
+div{
+    font-family: fantasy;
+}
+
+.titolo{
+    font-size: 650%;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: white;
+    text-shadow: 0px 0px 8px rgb(168, 162, 162);
+    text-align: center;
+}
+
+.box1{
+    position: absolute;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
+    margin-right: 10%;
+    border-radius: 25px;
+    background-color: #555;
+    height: 75%;
+    transition-duration: 2s;
+    left: 1%;
+    box-shadow: 0px 0px 20px black;
+}
+.box2{
+    position: absolute;
+    left:-200%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
+    margin-right: 10%;
+    border-radius: 25px;
+    background-color: #555;
+    height: 75%;
+    transition-duration: 2s;
+}
+.box3{
+    position: absolute;
+    left: -200%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
+    margin-right: 10%;
+    border-radius: 25px;
+    background-color: #555;
+    height: 75%;
+    transition-duration: 2s;
+}
+.box4{
+    position: absolute;
+    left: -200%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
+    margin-right: 10%;
+    border-radius: 25px;
+    background-color: #555;
+    height: 75%;
+    transition-duration: 2s;
+}
+.box5{
+    position: absolute;
+    left: -200%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
+    margin-right: 10%;
+    border-radius: 25px;
+    background-color: #555;
+    height: 75%;
+    transition-duration: 2s;
+}
+.box6{
+    position: absolute;
+    left: -200%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
+    margin-right: 10%;
+    border-radius: 25px;
+    background-color: #555;
+    height: 75%;
+    transition-duration: 2s;
+}
+.box7{
+    position: absolute;
+    left: -200%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
+    margin-right: 10%;
+    border-radius: 25px;
+    background-color: #555;
+    height: 75%;
+    transition-duration: 2s;
+}
+
+
+.titolo1-box1{
+    text-align: left;
+    font-size: 350%;
+    margin-left: 2%;
+    padding-top: 5%;
+    color: white;
+    text-shadow: 0px 0px 20px rgb(168, 162, 162);
+}
+.titolo1-box2{
+    text-align: left;
+    font-size: 350%;
+    margin-left: 2%;
+    padding-top: 2%;
+    color: white;
+    text-shadow: 0px 0px 20px rgb(168, 162, 162);
+}
+.titolo1-box3{
+    text-align: left;
+    font-size: 350%;
+    margin-left: 2%;
+    padding-top: 5%;
+    color: white;
+    text-shadow: 0px 0px 20px rgb(168, 162, 162);
+}
+.titolo1-box4{
+    text-align: left;
+    font-size: 350%;
+    margin-left: 2%;
+    padding-top: 2%;
+    color: white;
+    text-shadow: 0px 0px 20px rgb(168, 162, 162);
+}
+.titolo1-box6{
+    text-align: left;
+    font-size: 350%;
+    margin-left: 2%;
+    padding-top: 2%;
+    color: white;
+    text-shadow: 0px 0px 20px rgb(168, 162, 162);
+}
+.img1-box3{
+    height: 40%;
+    margin-left: 30%;
+    margin-top: 2%;
+}
+.img1-box4{
+    position: relative;
+    width: 25%;
+    margin-right: 5%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px black;
+    margin-left: 70%;
+    margin-top: 2%;
+}
+.testo1-box1{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 5px;
+    font-size: 150%;
+}
+.titolo2-box1{
+    text-align: right;
+    font-size: 350%;
+    margin-right: 2%;
+    padding-top: 5%;
+    color: white;
+    text-shadow: 0px 0px 20px rgb(168, 162, 162);
+}
+.testo2-box1{
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 5px;
+    font-size: 150%;
+}
+
+.div-return{
+    font-size: 200%;
+}
+.return-box1{
+    position: absolute;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px black;
+    top: -200%;
+    left: 2%;
+    transition-duration: 2s;
+}
+.return-box1:hover{
+    box-shadow: 0px 0px 20px white;
+}
+.return-box2{
+    position: absolute;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px white;
+    top: -200%;
+    left: 2%;
+    transition-duration: 2s;
+}
+.return-box3{
+    position: absolute;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px white;
+    top: -200%;
+    left: 2%;
+    transition-duration: 2s;
+}
+.return-box5{
+    position: absolute;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px white;
+    top: -200%;
+    left: 2%;
+    transition-duration: 2s;
+}
+
+.sub1-box4{
+    position: absolute;
+    margin-left: 5%;
+    top: 25%;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0px 0px  20px black;
+    margin-right: 5%;
+    margin-top: 5%;
+    width: 50%;
+    height: fit-content;
+    background-color: #161616;
+}
+.sub1-box4-text{
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-right:2%;
+    word-break: break-all;
+    margin-top: 2%;
+    padding-bottom: 2%;
+}
+.img1-box2{
+    height: 30%;
+    margin-left: 68%;
+    margin-top: 2%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px black;
+}
+.img2-box2{
+    position: relative;
+    height: 30%;
+    margin-left: 38%;
+    margin-top: -30%;
+    margin-bottom: 1.2%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px black;
+}
+.autor{
+    position: absolute;
+    color:white;
+    font-size: 2vw;
+    text-shadow: 0px 0px 8px black;
+    left:1%;
+    top:1%;
+}
+
+.return-back{
+    position: absolute;
+    font-size: 2vw;
+    left:90%;
+    top:1%;
+}
+
+.img3-box2{
+    position: relative;
+    height: 30%;
+    margin-left: -55%;
+    margin-top: -100%;
+    margin-bottom: 1.2%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px black;
+}
+
+.sub1-box5{
+    position: absolute;
+    margin-left: 15%;
+    top: 25%;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0px 0px  20px black;
+    margin-right: 15%;
+    margin-top: 8%;
+    width: 70%;
+    height: fit-content;
+    background-color: #161616;
+}
+.sub1-box5-text{
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-right:2%;
+    word-break: break-all;
+    margin-top: 2%;
+    padding-bottom: 2%;
+    font-size: 125%;
+}
+.img3-box7{
+    position: relative;
+    height: 30%;
+    margin-left: 10%;
+    margin-top: -100%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px black;
+}
+.img1-box7{
+    height: 30%;
+    margin-left: 60%;
+    margin-top: 2%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px black;
+}

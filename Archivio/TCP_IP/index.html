@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>network & comunicazione</title>
+        <link rel="stylesheet" href="CSS/index.css">
+        <link rel="stylesheet" href="CSS/lightDarkMode.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <link rel="icon" type="image/x-icon" href="IMG/icon_light.png">
+    </head>
+    <body>
+        <!--front page-->
+        <div class="front-page size" id="home">
+            <div class="nav-bar">
+                <div class="nav-logo">
+                    <a href="#home"><img class="logo" src="IMG/icon.png"></a>
+                </div>
+                <div class="nav-options">
+                    <p><a href="#home">Home</a></p>
+                    <p><a href="#network">Network</a></p>
+                    <p><a href="#tcp_upd">TPC/UPD</a></p>
+                    <p><a href="#comunicazione">Comunicazione</a></p>
+                    <p><a href="#credits">Crediti</a></p>
+                    <p><input type="checkbox" class="l" id="mode" checked></p>
+                </div>
+            </div>
+            <div class="shadow"></div>
+            <h1 class="titolo-front-page"><d><a href="#tcp_upd">TCP</a></d> / <d><a href="#comunicazione">IP</a></d></h1>
+            <a href="#network" class="scendi">&#8964;</a>
+        </div>
+
+        <!--network-->
+        <div class="Network size" id="network">
+            <h1 class="network_title">Network & comunication</h1>
+            <div class="network_contente">
+                <div class="network_capitolo size"><!--la differenza-->
+                    <h2 class="network_capitolo_titolo">
+                        Qual'è la differenza
+                    </h2>
+                    <div class="network_capitolo_content" style="display:grid;grid-template-columns: 2fr 1fr;">
+                        <div class="network_capitolo_contenitore_testo size">
+                            <p class="network_capitolo_testo">
+                                Prima di entrare nel merito del trasferimento dei dati, è importante distinguere una rete (network) ed una comunicazione. Ad esempio, quando due o più dispositivi sono collegati tra loro attraverso le schede di <a href="#network_funzionamento">rete</a>, questi dispositivi possono identificarsi in modo univoco dagli altri e creare una rete. In questo modo, ogni dispositivo all'interno della rete può comunicare in modo univoco con gli altri.<br><br> Lo scopo della rete è quello di consentire lo scambio di dati e informazioni tra i diversi dispositivi, che è chiamato <a href="#comunicazione">comunicazione</a>. 
+                            </p>
+                        </div>
+                        <div class="network_capitolo_contenitore_immagine size" style="display: flex;">
+                            <img src="IMG/network.png" alt="" class="network_capitolo_immagine">
+                        </div>
+                    </div>
+                </div>
+                <div class="network_capitolo size"><!--come funziona-->
+                    <h2 class="network_capitolo_titolo" id="network_funzionamento">
+                        Come funziona il network
+                    </h2>
+                    <div class="network_capitolo_content">
+                        <div class="network_capitolo_contenitore_testo size">
+                            <p class="network_capitolo_testo">
+                                In una rete abbiamo sempre tre componenti, il mittente che spedisce i dati, un canale che li trasporta, ed un destinatario; ma come vengono spediti?
+                                I messaggi vengono "rotti" in piccole unita grazie al metodo della <a href="#frammentazione">frammentazione</a>, che vengono spedite nel network, per poi essere ricevute dal destinatario. 
+                            </p>
+                            <div class="network_sottocapitolo_contenitore_testo">
+                                <p class="network_titolo_sottocapitolo">Mittente</p>
+                                <p class="network_sottocapitolo_testo">
+                                    Il mittente è colui che si occupa di frammentare il messaggio, ciò avviene grazie a diversi protocolli, tra cui il <a href="#tcp_upd">TCP</a> (transmission controll protocol), che suddivide il messaggio in segmenti.
+                                </p>
+                            </div>
+                            <div class="network_sottocapitolo_contenitore_testo">
+                                <p class="network_titolo_sottocapitolo">Canale</p>
+                                <p class="network_sottocapitolo_testo">
+                                    Il canale invece è il mezzo con il quale vengono trasferiti i dati da un nodo A ad un nodo B, ciò infatti può avvenire in diversi modi, via cavo LAN, trasmissione bluetooth, oppure attraverso una vasta rete
+                                    regolata da degli <a href="#">IP</a> (internet protocol), 
+
+                                </p>
+                            </div>
+                            <div class="network_sottocapitolo_contenitore_testo">
+                                <p class="network_titolo_sottocapitolo">Destinatario</p>
+                                <p class="network_sottocapitolo_testo">
+                                    Infine il destinatario, ricevuti i pacchetti dal network, grazie all' utilizzo dell' IP (internet protocol), riutilizzera il protocollo TCP
+                                    per ricostruire il messaggio originale (ricordiamo che il messaggio originale e stato suddiviso in segmenti dal mittente, per essere trasmetto sulla rete).
+                                </p>
+                            </div>
+                        </div>
+                        <div class="network_capitolo_contenitore_immagine size">
+                            <img src="IMG/img_prova.png" alt="" class="network_capitolo_immagine">
+                        </div>
+                    </div>
+                </div>
+                <div class="network_capitolo size" id="tcp_upd"><!--TCP-UPD-->
+                    <h2 class="network_capitolo_titolo">
+                        TCP & UPD
+                    </h2>
+                    <div class="network_capitolo_content">
+                        <div class="network_capitolo_contenitore_testo size">
+                            <div class="network_sottocapitolo_contenitore_testo">
+                                <p class="network_titolo_sottocapitolo">TCP</p>
+                                <p class="network_sottocapitolo_testo">
+                                    Il protocollo TCP (Transmission Control Protocol), è orientato alla connessione, quindi prima di iniziare la vera e propia trasmissione di dati, procede a instaurare una connessione col destinatario,
+                                    in più è un protocollo confermato e garantisce la consegna in ordine, ciò significa che in caso di pacchetto perso o danneggiato, questo particolare protocollo provvede a rimandare il pacchetto in questione, fino al ricevimento
+                                    del suo ACK; tutte queste caratteristiche rendono il protocollo TCP molto sicuro ed affidabile, ma allo stesso tempo lo rendono più lento all' UDP, infatti viene applicato preferibilmente in quei contesti dove
+                                    la correttezza dei pacchetti ricevuti è più importante, rispetto alle prestazioni.  
+                                </p>
+                            </div>
+
+                            <div class="network_sottocapitolo_contenitore_testo">
+                                <p class="network_titolo_sottocapitolo">UDP</p>
+                                <p class="network_sottocapitolo_testo">
+                                    Il protocollo UDP (User Datagram Protocol), a differenza del TCP, non si preoccupa ne di instaurare una connessione col destinatario, ne di controllare il corretto ricevimento dei pacchetti (per quanto riguarda ordine di arrivo e correttezza del dato),
+                                    ciò lo porta ad avere una probabilità di errore molto più alta rispetto al protocollo TCP, ma allo stesso tempo ne aumenta le prestazione di velocità, in quanto non ha bisogno di rinviare pacchetti danneggiati, o di verificare l' instaurazione della connessione;
+                                    per questo l' UDP viene preferibilmente applicato in quei contesti, dove la perdità di dati è secondaria rispetto alle prestazioni di velocità.
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="network_capitolo_contenitore_immagine size">
+                            <img src="IMG/img_prova.png" alt="" class="network_capitolo_immagine">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--comunicazione-->
+        <div class="Comunicazione size" id="comunicazione">
+            <h1 class="comunicazione_title">Comunicazione</h1>
+            <div class="comunicazione_contente">
+                <div class="comunicazione_capitolo size"><!--funzionamento-->
+                    <h2 class="comunicazione_capitolo_titolo">
+                        Come funziona
+                    </h2>
+                    <div class="comunicazione_capitolo_content">
+                        <div class="comunicazione_capitolo_contenitore_testo size">
+                            <p class="comunicazione_capitolo_testo size">
+                                La comunicazione di informazione tra 2 dispositivi avviene attraverso al passaggio di pacchetti, attraverso 7 (o 5) livelli di comunicazione, questi "strati" identificano il modello ISO-OSI,
+                                nel quale un pacchetto prima di essere spedito sul livello fisico (cavi o antenne), passa attraverso dei processi di <a hrf="#frammentazione">frammentazione</a> e di incapsulamento, dove gli vengono
+                                attaccate tutte quelle parti (chiamate header se davanti e trailer se in fondo), per la corretta trasmissione e ricezione del messaggio; il pacchetto una volta giunto a destinazione verra estratto da
+                                questo incapsulamento nidificato, per poi ritornare il messaggio originario tile ai nostri fini; tutto ciò è possibile grazie ad una serie di protocolli chiamati TCP/IP.
+                            </p>
+                        </div>
+                        <div class="comunicazione_capitolo_contenitore_immagine size">
+                            <img src="IMG/img_prova.png" alt="" class="comunicazione_capitolo_immagine">
+                        </div>
+                        <div class="comunicazione_sottocapitolo_content">
+                            <div class="comunicazione_sottocapitolo_contenitore_testo">
+                                <p class="comunicazione_titolo_sottocapitolo">I vari livelli</p>
+                                <p class="comunicazione_sottocapitolo_testo">
+                                    I vari livelli che permetto la trasmissione dei dati sono:<br>
+                                    <ul>
+                                        <li>Application</li>
+                                        <li>Transport (frammentazione dei pacchetti)</li>
+                                        <li>Network (assegnamento IP)</li>
+                                        <li>Data Link (creazione dell' Ethernet frame)</li>
+                                        <li>Physical (trasmissione fisica dei dati)</li>
+                                    </ul>
+                                </p>
+                            </div>
+                            <div class="comunicazione_sottocapitolo_contenitore_immagine size">
+                                <img src="IMG/capsulating.png" alt="capsulating" class="comunicazione_sottocapitolo_immagine capsulazione-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comunicazione_capitolo size"><!--utilizzo-->
+                    <h2 class="comunicazione_capitolo_titolo">
+                        Il concetto di frammentazione
+                    </h2>
+                    <div class="comunicazione_capitolo_content">
+                        <div class="comunicazione_capitolo_contenitore_testo size">
+                            <p class="comunicazione_capitolo_testo size">
+                                Puo capitare che la capacità di trasmissione di un canale sià minore della grandezza totale di un pacchetto, ciò si può riscontrare spesso quando dobbiamo inviare grand quantità di dati;
+                                in qusto caso, avviene un processo di frammentazione, che consiste nel dividere il pacchetto in sottopacchetti più piccoli, ordinati (dipendentemente dal protocollo) grazie ad un header,
+                                che aiutera poi il destinatario a "riassemblare" il pacchetto originario nell' ordine corretto.
+                            </p>
+                        </div>
+                        <div class="comunicazione_capitolo_contenitore_immagine size">
+                            <img src="IMG/img_prova.png" alt="" class="comunicazione_capitolo_immagine">
+                        </div>
+                    </div>
+                </div>
+                <div class="comunicazione_capitolo size"><!--caratteristiche-->
+                    <h2 class="comunicazione_capitolo_titolo">
+                        I livelli nel dettaglio
+                    </h2>
+                    <div class="comunicazione_capitolo_content">
+                        <div class="comunicazione_capitolo_contenitore_testo size">
+                            <div class="comunicazione_sottocapitolo_contenitore_testo">
+                                <p class="comunicazione_titolo_sottocapitolo">Application</p>
+                                <p class="comunicazione_sottocapitolo_testo">
+                                    Il livello Apllication si occupa invece delle applicazioni usate dall' utente, come per esempio i browser che usano protocolli <a href="../HTTP-HTTPS/index.html">HTTP e HTTPS</a>.
+                                </p>
+                            </div>
+
+                            <div class="comunicazione_sottocapitolo_contenitore_testo">
+                                <p class="comunicazione_titolo_sottocapitolo">Transport</p>
+                                <p class="comunicazione_sottocapitolo_testo">
+                                    Nel transport vengono usati i protocolli <a href="#tcp_upd">TCP ed UDP</a> (spiegati in precedenza)<br>
+                                    <a href="../HTTP-HTTPS/index.html">approfondimento sul connection-oriented e sull' hand-shake</a>.
+                                </p>
+                            </div>
+
+                            <div class="comunicazione_sottocapitolo_contenitore_testo">
+                                <p class="comunicazione_titolo_sottocapitolo">Network</p>
+                                <p class="comunicazione_sottocapitolo_testo">
+                                    Il livello network è colui che si occupa di aggiungere gli IP (internet protocoll) al pacchetto, che gli viene passato dal transport, cosi da creare
+                                    un IP packet, in grado di essere direzzionato in rete; oltre a ciò il Network ha il compito di trovare il percorso migliore per consegnare il pacchetto, attraverso la rete di nodi, per fare ciò viene usato il protocollo ARP se i due dispositivi si trovano nella stessa rete;
+                                    mentre nel caso i due dispositivi si trovassero in reti diverse, il protocollo ARP avrebbe l' indirizzo MAC del router, che una volta arrivato il pacchetto lo "decapsulerebbe", ed attraverso delle tabelle di routing, saprebbe dove reindirizzarlo per consegnarlo al destinatario.
+                                </p>
+                            </div>
+
+                            <div class="comunicazione_sottocapitolo_contenitore_testo">
+                                <p class="comunicazione_titolo_sottocapitolo">Data Link</p>
+                                <p class="comunicazione_sottocapitolo_testo">
+                                    I pacchetti nel Data-link vengono chiamati ethernet-frame, questo livello è suddiviso in 2 sotto-livelli, il livello MAC (Medium Access Control), e LLC (Logical Link Control):
+                                    <ul>
+                                        <li>
+                                            Il sottolivello MAC si occupa dell' incapsulamento del pacchetto proveniente dal livello Network, aggiungendoli un header ed un trailer, che servono rispettivamente per riconoscere mittente e destinatario del pacchetto, attraverso un codice esadecimale univoco;
+                                            e per il controllo di possibili errori durante la trasmissione del pacchetto. In più questo livello di controllare se il canale è libero per la trasmissione attraverso un protocollo chiamato CSMA/CD
+                                        </li>
+                                        <li>
+                                            Il sotto livello LLC invece fa da astrazione per i livelli superiori, cosi da "mascherare" il sotto-livello MAC, oltre a ciò controlla il flusso di dati, limitandolo (in caso sia necessario) per evitare la perdità di pacchetti da parte del destinatario,
+                                            mentre nel caso in cui qualche pacchetto venisse perso o corrotto, ciò verrebbe scoperto grazie al trailer applicato dal sotto-livello MAC, ed LLC procederebbe a rimandare il pacchetto, fino al ricevimento dell' ACK.
+                                        </li>
+                                    </ul>
+                                </p>
+                            </div>
+
+                            <div class="comunicazione_sottocapitolo_contenitore_testo">
+                                <p class="comunicazione_titolo_sottocapitolo">Physical</p>
+                                <p class="comunicazione_sottocapitolo_testo">
+                                    Costituisce il livello più basso della comunicazione, dove i dati sono trasmessi fisicamente attraverso 0 ed 1, sotto forma di alta e bassa tensione, di segnali radio o addirittura anche luce se parliamo di fibra ottica.
+                                    Solitamente a questo livello viene utilizzato il protocollo ethernet.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="comunicazione_capitolo_contenitore_immagine size">
+                            <img src="IMG/img_prova.png" alt="" class="comunicazione_capitolo_immagine">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--footer-->
+        <div class="footer" id="credits">
+            <div class="credits footer-section size">
+                <h3 class="footer_section_title">Crediti</h3>
+                <ul class="footer_section_content">
+                    <li>github: <a href="https://github.com/andreaVMC/">Andrea Vaccaro</a></li>
+                    <li>email: <a href="mailto:vaccaroandrea1227@gmail.com">vaccaroandrea1227@gmail.com</a></li>
+                    <li>autore: <a>Andrea Vaccaro</a></li>
+                </ul>
+            </div>
+            <div class="fonti footer-section size">
+                <h3 class="footer_section_title">Fonti</h3>
+                <ul class="footer_section_content">
+                    <li>immagine realizzate da Andrea Vaccaro</li>
+                    <li>appunti scolastici</li>
+                    <li><a href="https://www.youtube.com/watch?v=2QGgEk20RXM">TechTerms youtube video</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=AYdF7b3nMto">Code.org youtube video</a></li>
+                    <li><a href="https://www.flaticon.com/">icone</a></li>
+                    <li><a href="https://github.com/JkHuger">dark/ligth mode ispiration design</a></li>
+                </ul>
+            </div>
+            <div class="opensource footer-section">
+                <h3 class="footer_section_title">Open source</h3>
+                <ul class="footer_section_content">
+                    <li><a href="https://github.com/andreaVMC/">scarica questo sito</a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+    <script src="JS/index.js"></script>
+</html>
