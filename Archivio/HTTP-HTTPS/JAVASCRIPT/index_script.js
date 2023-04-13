@@ -89,3 +89,7 @@ function slide7() {
     document.querySelector(".return-box3").style = ("top:-200%");
     document.querySelector(".return-box5").style = ("top:-200%");
 }
+
+function avviso(){
+    window.alert("sito non responsive");
+}
