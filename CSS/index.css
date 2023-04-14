@@ -79,9 +79,16 @@ body{
 
 .logo-container{
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     width:50%;
     height: 6vh;
+}
+
+.logo-modello-3d{
+    height: 100%;
+    width: 100%;   
 }
 
 .nav-option-container{
