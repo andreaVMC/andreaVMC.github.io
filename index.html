@@ -13,22 +13,20 @@
     </head>
     <body>
         <div class="front-page">
+            <div class="shadow_navbar"></div>
             <div class="navbar">
                 <div class="logo-container">
-                    <model-viewer src="model3D/blackhole/scene.gltf" orientation="-10deg 10deg -30deg" camera-orbit="auto auto 3m" scale="0.3 0.3 0.3" alt="VR Headset" auto-rotate ar ios-src="assets/scene.gltf" class="logo-modello-3D"></model-viewer>    
                 </div>
                 <div class="nav-option-container">
                     <p onclick="location.href='https://github.com/andreaVMC'">GitHub</p>
-                    <p>Conoscimi</p>
+                    <p><a href="#conoscimi">Conoscimi</a></p>
                     <p>Cosa faccio</p>
-                    <p>Archivio</p>
+                    <p><a href="#archivio">Archivio</a></p>
                     <p>Contattami</p>
-                    <p>
-                        <label class="switch">
-                            <input type="checkbox" class="theme">
-                            <span class="slider"></span>
-                        </label>
-                    </p>
+                    <div class="light-dark-container">
+                        <img src="IMG/ligh-dark-theme/moon.png" alt="moon" class="moon">
+                        <img src="IMG/ligh-dark-theme/sun.png" alt="sun" class="sun">
+                    </div>
                 </div>
             </div>
             <div class="background">
@@ -48,18 +46,53 @@
         
         
         <div class="content" id="content">
-            <div class="conoscimi">
+            <div class="conoscimi" id="conoscimi">
                 <div class="frontpage">
                     <img src="IMG/parallax_1/background.png" id="background">
                     <img src="IMG/parallax_1/pianeti.png" id="pianeti">
                     <h1 id="testo">Ciao!<br>Io sono <d>Andrea</d></h1>
-                    <a id="bottone" href="google">scopri</a>
+                    <a id="bottone" href="#storia">scopri</a>
                     <img src="IMG/parallax_1/blackhole.png" id="blackhole">
                     <img src="IMG/parallax_1/satelliti.png" id="satelliti">
                 </div>
+                <div id="storia" class="storia">
+                    <h1 class="titolo">La mia storia</h1>
+                    <div class="time_line">
+                       <div class="sopra">
+                            <div class="figlio">2005<br>sono nato in un paesino nel sud della lombardia</div>
+                            <div class="figlio"></div>
+                            <div class="figlio">2019<br>già dal primo anno scopro la mia passione per questo campo ed inizio a sperimentare da solo a casa</div>
+                            <div class="figlio"></div>
+                            <div class="figlio">2020-2021<br> mi iscrivo con alcuni dei miei compagnidi classe ad una gara di problem solving, finendo per qualificarci secondi in nazionale</div>
+                            <div class="figlio"></div>
+                            <div class="figlio"></div>
+                            <div class="figlio"></div>
+                            <div class="figlio"></div>
+                            <div class="figlio"></div>
+                       </div>
+                       <div class="linea">
+                            <img src="IMG/time line/line-light.png" class="linea_img">
+                       </div>
+                       <div class="sotto">
+                            <div class="figlio"></div>
+                            <div class="figlio">2018<br>finisco il mio percorso di studi primario e secondari, indeciso su che superiori fare mi iscrivo all'indirizzo informatico dell' ITIS E.Fermi di Mantova</div>
+                            <div class="figlio"></div>
+                            <div class="figlio">2019 <br>pubblico il mio primo sito web</div>
+                            <div class="figlio"></div>
+                            <div class="figlio">2021<br>inizio ad interessarmi in particola al mondo del web, iniziando ad imparare e conoscere nuovi linguaggi di programmazione</div>
+                            <div class="figlio"></div>
+                            <div class="figlio"></div>
+                            <div class="figlio"></div>
+                            <div class="figlio"></div>
+                       </div>
+                    </div>
+                    <div class="bottoni">
+                        <button class="indietro">indietro</button>
+                        <button class="avanti">avanti</button>
+                    </div>
+                </div>
             </div>
         </div>
-
 
 
 

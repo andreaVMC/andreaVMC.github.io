@@ -1,0 +1,28 @@
+<svg id="Livello_1" data-name="Livello 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10817 70.56">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke-width: 15px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-width: 3px;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke-width: 9px;
+      }
+    </style>
+  </defs>
+  <title>linesvg</title>
+  <path class="cls-1" d="M72.5,52.5h0Z" transform="translate(-64 -18.55)"/>
+  <path class="cls-2" d="M73.5,46.5c-8,0-8,0-8,5,0,7,0,7,8,7" transform="translate(-64 -18.55)"/>
+  <path class="cls-3" d="M10850.5,21.5c26,30,26,28,26,30,0,3,0,0-25,35" transform="translate(-64 -18.55)"/>
+</svg>
