@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="assets/img/ferari.png">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="assets/css/docs.css" type="text/css">
+	<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+	<!-- font awesome 5 -->
+	<script src="https://kit.fontawesome.com/95ae55bd9a.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		$( "a.scrollLink" ).click(function( event ) {
+			event.preventDefault();
+			$("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top }, 1000);
+		});
+		});
+	</script>
+	<!-- AOS css -->
+	<link href="assets/css/AOS/aos.css" rel="stylesheet">
+	<meta name="description" content="Ferari SF-24">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+	<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+	<title>SF-24 Documentation</title>
+</head>
+<body data-spy="scroll" data-target="#scrollmenu" data-offset="1" id="gototop" class="dark-mode">
+
+	<nav class="custom_nav">
+		<div class="container center" style="padding: 10px 0">
+			<div class="custom_logo">
+				<a href="/"><img src="assets/img/scuderia-ferari.png" alt="logo" height="45px"></a>
+			</div>
+      <!--
+			<div id="mainListDiv" class="custom_main_list">
+			  <ul class="navlinks">
+				  <li><a href="it/docs">AUTO</a></li>
+				</ul>
+			</div>
+      
+			<span class="navTrigger">
+				<i></i>
+				<i></i>
+				<i></i>
+			</span>-->
+		</div>
+	</nav>
+
+<div class="docs1">
+
+</div>
+
+<div style="width: 100%; display: flex; flex-direction: row;">
+  <div class="menuscroll">
+      <nav class="scroll-menu" id="scrollmenu">
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="#materiali">Materiali</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#funzionamento">Funzionamento</a>
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link ml-3" href="#movimenti-base">Movimenti base</a>
+              <a class="nav-link ml-3" href="#controllo">Controllo</a>
+            </nav>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#software">Software</a>
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link ml-3" href="#master">Master</a>
+              <a class="nav-link ml-3" href="#slave">Slave</a>
+            </nav>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#hardware">Hardware</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#analisi">Analisi criticità generali e risoluzione</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#finali">Considerazioni finali</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#simulatore">Simulatore</a>
+          </li>
+        </ul>
+      </nav>
+  </div>
+      <div class="sezioni p-3">
+        <div id="materiali"> 
+          <div class="hr"></div>   
+          <h2>Materiali necessari</h2>
+          <div>
+            <h3>Motore DC</h3>
+            <p>Un motore DC, o motore a corrente continua, è un dispositivo che converte l'energia elettrica meccanica. Funziona applicando una corrente continua attraverso un avvolgimento o bobina all'interno del motore. Noi ne utilizzeremo 1 per ogni ruota della macchinina, per un totale di 4 motori.</p>
+            <div class="center">
+              <img src="assets/img/motore-dc.png">
+            </div>
+          </div>
+          <div>
+            <h3>Transistor</h3>
+            <p>Un transistor è una specie di interruttore per la corrente, noi nello specifico usiamo i transistor di tipo NPN, e ne useremo 2, dove ognuno controllare i 2 motori di un lato della macchinina, le basi dei transistor verranno alimentate o meno dai pin logici dell'Arduino Uno, cosi da poter gestire l'andamento della macchinina a seconda dei comandi.</p>
+            <div class="center">
+              <img src="assets/img/transistor.png">
+            </div>
+          </div>
+          <div>
+            <h3>Diodo</h3>
+            <p>Un diodo è un componente che rende possibile il passaggio della corrente in un solo verso, noi ne useremo 2, 1 per ognuno dei 2 circuiti, cosi da vitare il ritorno di corrente dei Motori DC, che provocherebbe il danneggiamento del transistor.</p>
+            <div class="center">
+              <img src="assets/img/diodo.png">
+            </div>
+          </div>
+          <div>
+            <h3>Resistenze</h3>
+            <p>In questo circuito impiegheremo 2 resistenza da 330Ω l'una, ognuna delle 2 alla base di un transistor, cosi da evitarne il danneggiamento e poter permetterne il corretto impiego.</p>
+            <div class="center">
+              <img src="assets/img/resistenze.webp">
+            </div>
+          </div>
+          <div>
+            <h3>Arduino UNO</h3>
+            <p>L'Arduino che andremo ad utilizzare non sarà originale, ma emula il funzionamento di un Arduino Nano; lo utilizzeremo per controllare i 2 pin digitali, che a loro volta controlleranno i motori della macchinina secondo le esigenze; in più sarà colui che riceverà ed elaborerà i dati ricevuti attraverso il modulo bluetooth.</p>
+            <div class="center">
+              <img src="assets/img/arduino.png">
+            </div>
+          </div>
+          <div>
+            <h3>HC-05</h3>
+            <p>L'HC-05 è il modulo bluetooth che utilizzeremo per ricevere i dati in maniera wireless, servendoci per l'appunto della comunicazione bluetooth seriale.</p>
+            <div class="center">
+              <img src="assets/img/hc05.png">
+            </div>
+          </div>
+          </p>
+        </div>
+        <div id="funzionamento"> 
+          <div class="hr"></div>
+          <h2>Progettazione di funzionamento</h2>
+          <div id="movimenti-base">
+            <h3>Logica di movimenti base</h3>
+            <p>Avendo a disposizione 4 motori comandabili singolarmente, abbiamo deciso di dividerli in sezioni per lato (destra e sinistra), cosi che potessimo alimentare entrambi i lati insieme, oppure uno per volta; facendo ciò possiamo controllare il movimento della macchinina, attraverso i 3 principali movimenti: </p>
+            <ul>
+              <li>Avanti, dove entrambi i lati vengono alimentati e tutti insieme fanno muovere la macchinina in avanti.</li>
+              <li>Sterzata a destra, dove solo il lato sinistro viene alimentato, cosicché il lato destro faccia da perno e ciò renda possibile la sterzata.</li>
+              <li>Sterzata a sinistra, dove segue la stessa logica della sterzata a destra, ma invertendo l'alimentazione dei due lati, quindi verrà alimentato solo il lato destro.</li>
+            </ul>
+            <div class="center">
+              <img src="assets/img/funzionamento.png">
+            </div>
+          </div>
+          <div id="controllo">
+            <h3>Logica di controllo</h3>
+            <p>Per il controllo della macchinina da remoto, abbiamo pensato ad un controller molto semplice, sia con GUI, che con acquisizione di tasti; il tutto doveva semplicemente fare da tramite tra User e macchinina.</p>
+            <div class="center">
+              <img src="assets/img/controllo.png">
+            </div>
+          </div>
+        </div>
+        <div id="software">
+          <div class="hr"></div>         
+          <h2>Software</h2>
+          <div id="master">
+          <h3>Sviluppo di controller remoto</h3>
+          <div>
+            <h4>Scelta del linguaggio di programmazione</h4>
+            <p>Per quanta riguarda il linguaggio di programmazione, la nostra prima scelta era java, in quanto argomento del nostro anno scolastico; però dopo esserci resi conto della complessità di tale linguaggio per gestire la comunicazione bluetooth abbiamo deciso di provare altri linguaggi; siamo arrivati ad una soluzione, ovvero Python, e all'utilizzo della sua libreria “PySerial”, che permette di comunicare in maniera seriale attraverso una porta “COM” del pc da noi specificata; tutto ciò ha reso la realizzazione (lato software) del progetto molto più semplice.</p>
+          </div>
+          <div id="logica-dati-trasferire">
+            <h4>Logica dei dati da trasferire</h4>
+            <p>Abbiamo cercato di rendere la comunicazione di dati tra controller ed Arduino la più comprensibile possibile, per far ciò abbiamo creato una specie di protocollo tra Master e Slave, dove:</p>
+            <table class="table">
+              <tr>
+                <th>DATO INVIATO</th>
+                <th>ISTRUZIONE</th>
+              </tr>
+              <tr>
+                <th>1</th>
+                <td>Fermo</td>
+              </tr>
+              <tr>
+                <th>2</th>
+                <td>Avanti</td>
+              </tr>
+              <tr>
+                <th>3</th>
+                <td>Destra</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>Sinistra</td>
+              </tr>
+            </table>
+          </div>
+          <div>
+            <h4>Implementazione del codice</h4>
+            <p>Per il codice sono state proposte più versioni, dove le prime presentavano un'interfaccia grafica abbozzata, mentre la definita utilizza una funzione per eseguire determinate istruzioni dipendentemente dal tasto che viene premuto (sulla tastiera), e logicamente noi abbiamo collegato i già canonici “wasd”, con anche i caratteri “q” ed “e” per altre opzioni, le istruzioni poi utilizzavano dei metodi di “PySerial”, che avviavano il trasferimento seriale di dati via bluetooth.</p>
+            <p>Prototipi e codice definitivo:</p>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <p style="margin: 0;">Prima prova di controller:</p>
+                  <div class="center">
+                    <img src="assets/img/controller-1.png">
+                  </div>
+                </div>
+                <div class="col">
+                  <p style="margin: 0;">Prima sperimentazione comunicazione seriale:</p>
+                  <div class="center">
+                    <img src="assets/img/code-1.png">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p style="margin: 0;">Codice definitivo:</p>
+            <div style="padding: 15px 0;">
+              <img src="assets/img/code-final.png">
+            </div>
+          </div>
+          </div>
+          <div id="slave">
+          <h3>Sviluppo del programma di controllo</h3>
+          <div>
+            <h4>Logica delle istruzioni</h4>
+            <p>Come detto prima, per le varie istruzioni abbiamo adottato un “protocollo” molto semplice, quindi logicamente nel nostro arduino, all'arrivo del dato di valore “2”, che stava ad indicare l'istruzione “avanti”, venivano rilasciati valore di tensione “HIGH” nei digitalPin predestinati alla gestione dei motori, la stessa regola è stata applicati per le altre istruzioni, cosi mescolando la <a href="#logica-movimenti-base">logica dei movimenti base</a> e la <a href="#logica-dati-trasferire">logica delle istruzioni</a>, siamo riusciti a ricavare il programma “Slave” dall'arduino. </p>
+          </div>
+          <div>
+            <h4>Implementazione del codice</h4>
+            <p>Servendoci dell'IDE Arduino, abbiamo sviluppato il codice per la gestione dei pin digitali:</p>
+            <pre>
+#include &lt;avr/wdt.h&gt;
+#include &lt;SoftwareSerial.h&gt;
+#define VCCBLU 12 //pin per hc05
+#define GNDBLU 11
+SoftwareSerial mySerial(10, 9);
+//pin dei motori
+//dietro sinista
+#define DX 10
+#define SX 11
+void setup() {
+  Serial.begin(9600); // inizializza la comunicazione seriale a 9600 bps
+  mySerial.begin(9600); //creo la mia seriale digitale
+  pinMode(VCCBLU, OUTPUT);
+  pinMode(GNDBLU, OUTPUT);
+  digitalWrite(VCCBLU, HIGH); //accendo hc05
+  digitalWrite(GNDBLU, LOW);
+  while (!Serial) { ; } //attendo che si stabilisca la connessione
+  wdt_enable(WDTO_1S);
+  //setto i pin dei motiri come output
+  pinMode(DX, OUTPUT);
+  pinMode(SX, OUTPUT);
+}
+void loop() {
+  wdt_reset();
+  if (mySerial.available() > 0) { // se ci sono dati disponibili sulla seriale
+    char incomingByte = mySerial.read(); // leggi un carattere dalla seriale
+    if (incomingByte == '2') { // se il carattere ricevuto è '2'
+      avanti(); //tutti accesi
+      delay(200);
+      wdt_reset();
+      spenti(); //tutti i motori spenti
+    } else if (incomingByte == '1') {
+      spenti(); //motori spenti
+      wdt_reset();
+    } else if (incomingByte == '3') {
+      destra(); //motori destra
+      delay(200);
+      wdt_reset();
+      spenti(); //motori spenti
+    } else if (incomingByte == '4') {
+      sinistra(); //motori sinistra
+      delay(200);
+      wdt_reset();
+      spenti(); //motori spenti
+    } else {
+      spenti(); //motori spenti
+      wdt_reset();
+    }
+  }
+  while (mySerial.available() > 0) { //pulisco la seriale
+    wdt_reset();
+    char incomingByte = mySerial.read();
+  }
+}
+void avanti() {
+  digitalWrite(SX, HIGH);
+  digitalWrite(DX, HIGH);
+  return;
+}
+void sinistra() {
+  digitalWrite(SX, LOW);
+  digitalWrite(DX, HIGH);
+  return;
+}
+void destra() {
+  digitalWrite(SX, HIGH);
+  digitalWrite(DX, LOW);
+  return;
+}
+void spenti() {
+  digitalWrite(SX, LOW);
+  digitalWrite(DX, LOW);
+  return;
+}</pre>
+          </div>
+          <div>
+            <h4>Risoluzione delle critici&agrave;</h4>
+            <p>All'inizio abbiamo trovato molti problemi nella corretta interpretazione dei dati ricevuti dal programma Python, e ciò causava un loop infinito all'interno del nostro software arduino, perciò come prima cosa abbiamo implementato la libreria “avr/wdt.h”, che ci permette di resettare l'arduino e farlo ripartire ogni qualvolta il timer (impostato da noi) si azzerasse, cosi da impossibilitare l'evento di loop infiniti; infine, dopo svariati test abbiamo capito che il vero problema risedeva nei troppi dati ricevuti, e ciò portava ad un rallentamento considerevole del programma nel passare da un' istruzione ad un'altra, perciò dopo qualsiasi istruzione eseguita, abbiamo messo un loop di while che ritornasse alla fine dei dati seriali, cosi da rendere il programma pronto all' ultima istruzione ricevuta</p>
+            <pre>while (mySerial.available() > 0) { //pulisco la seriale
+  wdt_reset();
+  char incomingByte = mySerial.read();
+}</pre>
+          </div>
+          </div>
+        </div>
+        <div id="hardware">  
+          <div class="hr"></div>       
+          <h2>Hardware</h2>
+          <div>
+            <h3>Sviluppo modello Tinkercad del circuito</h3>
+            <p>Prima di creare il nostro circuito nell'effettivo, lo abbiamo realizzato su Tinkercad per testarlo, e verificarne il funzionamento.</p>
+            <div class="center">
+              <img src="assets/img/tinkercad.png">
+            </div>
+          </div>
+          <div>
+            <h3>Implementazione del circuito su millefori</h3>
+            <p>Dopo aver creato i progetto in formato digitale, lo abbiamo realizzato su millefori, creando i corretti collegamenti tra i vari componenti; grazie alle ore di laboratorio siamo riusciti a usare il saldatore per lo stagno, cosi da rendere più sicuro il tutto.</p>
+            <div class="center">
+              <img src="assets/img/millefori.png">
+            </div>
+          </div>
+          <div>
+            <h3>Test del circuito fisico</h3>
+            <p>Insieme al prof, dopo aver realizzato il circuito, lo abbiamo testato, con risultati positivi in laboratorio, grazie ad un generatore di tensione in continua a 5V, come ci aspettavamo infatti, al collegamento della base del transistor al collegamento positivo i 2 motori si azionavano. </p>
+          </div>
+        </div>
+        <div id="analisi">
+          <h2>Analisi criticità generali e risoluzione</h2>
+          <div>
+            <h3>Ritorno di corrente</h3>
+            <p>Come detto prima nella sezione del “Diodo”, abbiamo accennato ad un ritorno di corrente, una criticità del circuito che ci ha dato molti problemi; infatti quando andavamo a spegnere il Motore DC questo causava un ritorno di corrente, che finiva per bruciare il transistor, danneggiando irreparabilmente il circuito.</p>
+            <div>
+              <h4>Risoluzione</h4>
+              <p>Dopo esserci resi conto di questo problema abbiamo installato un diodo tra il collegamento positivo e negativo del motore DC, cosi da rendere impossibile questo ritorno di corrente.</p>
+            </div>
+          </div>
+          <div>
+            <h3>Criticità peso/potenza</h3>
+            <p>Un problema di cui tener conto è il peso della macchinina relativamente alla potenza sprigionata dai motori.</p>
+            <div>
+              <h4>Risoluzione</h4>
+              <p>Per questo abbiamo deciso di avere una batteria dedicata per ogni coppia di motori, cosi da acquisire peso con la batteria supplementare, ma da poterlo sostenere grazie alla maggiore potenza sprigionabile.</p>
+            </div>
+          </div>
+          <div>
+            <h3>Criticità strutturali</h3>
+            <p>Ovviamente anche la scocca della macchinina giocava un ruolo fondamentale per la realizzazione del progetto.</p>
+            <div>
+              <h4>Risoluzione</h4>
+              <p>Abbiamo confrontato più materiali diversi tra di loro, ma le due opzioni più gettonate sono state alluminio (semplici lattine) e semplice cartone, inizialmente eravamo più orientati verso l'alluminio che alla fine si rivelo proprio la nostra scelta, utilizzando una lattina come scocca per la macchinina. </p>
+            </div>
+          </div>
+        </div>
+        <div id="finali">
+          <h2>Considerazioni finali</h2>
+          <p>Il gruppo è stato molto produttivo durante la realizzazione del progetto, rispondendo in maniera positiva ai vari tentativi falliti, e non perdendo mai la motivazione; il risultato ottenuto non è all'altezza delle aspettative iniziali ma siamo comunque fieri di un lavoro completo, che abbia soddisfatto i requisiti fondamentali che ci siamo posti. Il saper lavorare in gruppo è stato fondamentale per il completamento del progetto, un nostro grande punto di forza è certamente stato la divisione dei lavori, in maniera che ognuno fosse partecipe al progetto, e la comunicazione tra i membri del gruppo.</p>
+        </div>
+        <div id="simulatore">
+          <div class="hr"></div>
+          <h2>Simulatore online</h2>
+          <p>Fai pratica con il nostro simulatore online. Con una grafica ultra realistica e i comandi accurati, è utilizzato anche dai nostri piloti per esercitarsi e ha permesso di migliorare le capacità fisiche e mentali in modo da vincere ogni gara.</p>
+          <div style="padding: 0 35px;">
+            <div class="simulator-container">
+              <iframe id="game-iframe" src="https://games.crazygames.com/en_US/crazy-grand-prix/index.html" title="Crazy Grand Prix" scrolling="no" allow="autoplay; payment; fullscreen; microphone; focus-without-user-activation *; screen-wake-lock; gamepad; clipboard-read; clipboard-write;" allowfullscreen="" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-same-origin allow-downloads allow-popups" loading="eager" data-hj-allow-iframe="true" class="simulator"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img src="assets/img/sponsor.svg"></img>
+
+    <!-- Footer -->
+<footer class="text-center text-white custom-footer-1" style="font-size: 1rem !important;">
+	
+	<div class="container p-5">
+		<div class="row">
+			<div class="col-sm">
+				<a href="/index.html"color: #fff; text-decoration: none;">Home</a>
+			</div>
+			<div class="col-sm">
+				<a href="Macchina-Radiocomandata/documentazione_macchininagruppo_1.pdf" style="color: #fff; text-decoration: none;">Documentation</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<a href="#gototop" style="color: white" class="a-hover-none scrollLink"><u>Go to top</u></a>
+			</div>
+		</div>
+	</div>
+
+	<hr style="background-color: #646464;">
+	<div class="container p-4">
+		<div class="row">
+			<div class="col-sm">
+				<section class="mb-2">
+					<a class="btn btn-outline-light btn-floating" style="width:69px;" target="_blank"
+						href="https://github.com/kev1nl1u" role="button"><i class="fab fa-github"></i><br />Kev</a>
+					<a class="btn btn-outline-light btn-floating" style="width:69px;" target="_blank"
+						href="https://twitter.com/kevinIiu" role="button"><i class="fab fa-twitter"></i><br />Kev</a>
+				</section>
+			</div>
+			<div class="col-sm">
+				<section class="mb-2">
+					<a class="btn btn-outline-light btn-floating" style="width:69px;" target="_blank"
+						href="https://github.com/andreaVMC" role="button"><i class="fab fa-github"></i><br />VMC</a>
+					<a class="btn btn-outline-light btn-floating" style="width:69px;" target="_blank"
+						href="https://instagram.com/vmc.andrea" role="button"><i
+							class="fab fa-twitter"></i><br />VMC</a>
+				</section>
+			</div>
+			<div class="col-sm">
+				<section class="mb-2">
+					<a class="btn btn-outline-light btn-floating" style="width:69px;" target="_blank"
+						href="https://github.com/kev1nl1u" role="button"><i class="fab fa-github"></i><br />Mix</a>
+					<a class="btn btn-outline-light btn-floating" style="width:69px;" target="_blank"
+						href="https://www.instagram.com/michelepedroni_" role="button"><i
+							class="fab fa-instagram"></i><br />Mix</a>
+				</section>
+			</div>
+			<div class="col-sm">
+				<section class="mb-2">
+					<a class="btn btn-outline-light btn-floating" style="width:69px;" target="_blank"
+						href="https://github.com/braguZZers" role="button"><i class="fab fa-github"></i><br />Braguz</a>
+					<a class="btn btn-outline-light btn-floating" style="width:69px;" target="_blank"
+						href="https://www.instagram.com/matteo_braguzzi" role="button"><i
+							class="fab fa-instagram"></i><br />Braguz</a>
+				</section>
+			</div>
+		</div>
+	</div>
+
+	<hr style="background-color: #646464;">
+	<div style="padding: 50px 0 30px 0;">
+		<span style="font-size: 7px; color: #646464">Ferari N.V. - Società capogruppo - indirizzo in via Braguzzi n. 69, 69420 Canneto sull'Oglio (MN), Italia<br>
+		Ferrari S.p.A. - Società di diritto italiano con sede legale in via Vaccaro n. 420, Bellaguarda, Italia<br>
+		Copyright 2023 - All rights reserved</span>
+	</div>
+
+	<div style="height: 48px; padding: 10px 0">
+		<img src="assets/img/monster-logo.png" style="max-height: 28px;">
+	</div>
+
+</footer>
+  
+  
+      <!-- Optional JavaScript -->
+      <!-- inizialize AOS  -->
+      <script type="text/javascript" src="assets/css/AOS/aos.js"></script>
+      <script type="text/javascript">
+          AOS.init();
+      </script>
+
+      <script>
+        // mobile
+        if(window.matchMedia('(hover: hover)').matches){
+          var nodesktop = document.getElementById('no-desktop');
+          nodesktop.style.display = 'none';
+        }else{
+          document.getElementById('no-mobile').style.display = 'none';
+          $('.docs1').css("background-size" , "contain");
+          $('.docs1').css("height" , "40vh");
+          $('.menuscroll').hide();
+          $('.sezioni').css("width" , "100%");
+        }
+      </script>
+    
+      <script>
+        // shrink navbar removing paddings and adding black background 
+        $(window).scroll(function() {
+          if ($(document).scrollTop() > 50) {
+            $('.custom_nav').addClass('affix');
+            } else {
+            $('.custom_nav').removeClass('affix');
+          }
+        });
+      </script>
+
+	  <!--
+    	<script>
+        // toggle navbar hamburger
+        $('.navTrigger').click(function () {
+          $(this).toggleClass('active');
+          $("#mainListDiv").toggleClass("show_list");
+          $("#mainListDiv").fadeIn();
+        });
+      </script>
+-->
+</body>
+</html>

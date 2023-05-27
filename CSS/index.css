@@ -22,6 +22,17 @@ html{
     scroll-behavior: smooth;
 }
 
+#caricamento{
+    background-color: black;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 12vw;
+    color:red;
+}
+
 .andrea{
     cursor:pointer;
     color: var(--sfondo);
@@ -249,7 +260,7 @@ body{
 .conoscimi>.storia>.time_line{
     width: 500%;
     height: 50vh;
-    border:1px solid red;
+    /*border:1px solid red;*/
     transition-duration: 0.3s;
     margin-left: 400%;
     text-align: left;
@@ -258,7 +269,7 @@ body{
 }
 
 .conoscimi>.storia>.time_line>.sopra, .sotto{
-    border: 1px solid green;
+    /*border: 1px solid green;*/
     width: 100%;
     height: 100%;
     display: grid;
@@ -275,7 +286,7 @@ body{
     width: 95%;
 }
 .conoscimi>.storia>.time_line>.sopra>.figlio, .sotto>.figlio{
-    border: 1px solid green;
+    /*border: 1px solid green;*/
     height: 100%;
     display: flex;
     justify-content: center;
