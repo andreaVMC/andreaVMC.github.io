@@ -1,6 +1,10 @@
 $(document).ready(function(){
     //nascondi il caricamento
-    $("#caricamento").hide();
+    //funzione sleep
+    sleep(2500).then(() => {
+        $(".loading").fadeOut();
+        document.getElementById("caricamento").style.height = "0%";
+    });
 });
 
 //funzione sleep

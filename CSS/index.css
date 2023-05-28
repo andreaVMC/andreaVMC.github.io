@@ -31,6 +31,11 @@ html{
     justify-content: center;
     font-size: 12vw;
     color:red;
+    transition-duration: 0.5s;
+}
+
+.loading{
+    width: 10%;
 }
 
 .andrea{
