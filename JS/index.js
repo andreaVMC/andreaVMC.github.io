@@ -53,6 +53,14 @@ $(".indietro").click(function(){
         $(".time_line").css({
             'margin-left':percentuale+100+'%',
         })
+        $(".avanti").css({
+            'opacity':'100%',
+        })
+        if((percentuale+100)>=400){
+            $(".indietro").css({
+                'opacity':'25%',
+            })
+        }
     }
 });
 
@@ -67,6 +75,14 @@ $(".avanti").click(function(){
         $(".time_line").css({
             'margin-left':percentuale-100+'%',
         })
+        $(".indietro").css({
+            'opacity':'100%',
+        })
+        if((percentuale-100)<=(400*-1)){
+            $(".avanti").css({
+                'opacity':'25%',
+            })
+        }
     }
     console.log($(".linea").height()+" "+$(".time_line").width());
 });

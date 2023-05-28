@@ -293,7 +293,7 @@ body{
 .conoscimi>.storia>.time_line>.linea>.linea_img{
     width: 95%;
 }
-.conoscimi>.storia>.time_line>.sopra>.figlio, .sotto>.figlio{
+.conoscimi>.storia>.time_line>.sopra>.figlio, .conoscimi>.storia>.time_line>.sotto>.figlio{
     /*border: 1px solid green;*/
     height: 100%;
     display: flex;
@@ -304,6 +304,46 @@ body{
     font-size: 1.2vw;
     padding-left: 20%;
     padding-right: 20%;
+}
+
+.conoscimi>.storia>.bottoni{
+    /*border: 1px solid red;*/
+    width: 25%;
+    margin-top: 3%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.conoscimi>.storia>.bottoni>.indietro , .conoscimi>.storia>.bottoni>.avanti{
+    margin: 2% 2% 2% 2%;
+    height: 5vh;
+    font-weight: 700;
+    font-size: 1.2vw;
+    padding: 2% 5% 2% 5%;
+    border-color: transparent;
+    color: var(--text);
+    background-color: var(--contrasto-secondario);
+    transition-duration: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.conoscimi>.storia>.bottoni>.indietro{
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    opacity: 25%;
+}
+
+.conoscimi>.storia>.bottoni>.avanti{
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.conoscimi>.storia>.bottoni>.indietro:hover , .conoscimi>.storia>.bottoni>.avanti:hover{
+    text-shadow: 0px 0px 2px var(--sfondo);
+    box-shadow: var(--contrasto) 0px 0px 5px 0px;
 }
 
 
