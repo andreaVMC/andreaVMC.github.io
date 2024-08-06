@@ -1,0 +1,50 @@
+body {
+    margin: 2%;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-image: url('IMG/red_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Pilowlava';
+    src: url('fonts/webfonts/Pilowlava-Regular.woff2') format('woff2');
+}
+
+img{
+    cursor:pointer;
+    transition-duration: 0.2s;
+}
+
+img:hover{
+    transform: scale(1.1);
+}
+
+h1, h3 {
+    font-family: 'Pilowlava', sans-serif;
+    text-align: center;
+    color: white;
+    margin-top: 10%;
+    position: relative; /* Necessario per posizionare il pseudo-elemento */
+}
+
+h3::after {
+    content: '';
+    position: absolute;
+    left: 50%; /* Inizia al centro */
+    bottom: -5px; /* Posiziona sotto il testo */
+    width: 0; /* Linea nascosta inizialmente */
+    height: 10px; /* Spessore della linea */
+    border-radius: 15px;
+    background-color: white; /* Colore della decorazione */
+    transition: width 0.2s; /* Transizione della larghezza */
+    transform: translateX(-50%); /* Centra la linea */
+}
+
+h3:hover::after {
+    width: 100%; /* Mostra la linea al passaggio del mouse */
+}
