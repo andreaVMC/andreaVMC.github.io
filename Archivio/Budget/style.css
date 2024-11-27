@@ -1,0 +1,37 @@
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.container_totale{
+    width: 80%;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2% 2%;
+}
+
+.container_guadagni{
+    border: 1px solid red;
+    width: 40%;
+}
+
+.container_spese{
+    border: 1px solid red;
+    width: 40%;
+}
+
+
+
+table{
+    width: 100%;
+}
+
+td{
+    text-align: center;
+}
