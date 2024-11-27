@@ -919,19 +919,20 @@ function windowAggiungiCategoria() {
 <?php
     function instauraConnessione(){
         try {
-            // Stabilisco la connessione al database
+            // Stabilisco la connessione al database, inclusa la porta
             $connessione = new PDO(
-                "mysql:host=".$GLOBALS['dbhost'].";dbname=".$GLOBALS['dbname'],
+                "mysql:host=".$GLOBALS['dbhost'].";port=".$GLOBALS['port'].";dbname=".$GLOBALS['dbname'],
                 $GLOBALS['dbuser'],
                 $GLOBALS['dbpassword']
             );
             $connessione->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $connessione;
-        }catch(PDOException $e) {
-            echo $e->getMessage();
+        } catch(PDOException $e) {
+            echo "Errore di connessione: " . $e->getMessage();
             return false;
         }
     }
+
 
 
 
