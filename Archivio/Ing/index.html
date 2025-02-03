@@ -19,7 +19,7 @@
             background-color: #f4f4f4;
         }
         .title {
-            font-size: 80px;
+            font-size: 30px;
             margin-bottom: 20px;
             text-align: center;
         }
@@ -29,16 +29,18 @@
             align-items: flex-start;
             position: relative;
             width: 80%;
-            height: 200px;  /* Puoi regolare questa altezza per vedere l'overflow */
+            height: 35px;  /* Puoi regolare questa altezza per vedere l'overflow */
             border: 1px solid black;
             overflow: hidden;
             border-radius: 200px;
+            z-index: 0;
         }
 
         .images-container img {
             position: absolute;
             bottom: 0;
-            height: 100%;
+            width: 2%;
+
             transition: transform 0.1s ease-in-out; /* Transizione per l'effetto di spostamento */
         }
 
@@ -47,9 +49,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size:100px;
+            font-size:30px;
             font-weight: bold;
             color: black;
+            z-index: 99;
         }
     </style>
 
@@ -70,7 +73,6 @@
         cfuRaggiunti += 9; // C Informatica
         cfuRaggiunti += 9; // Elettronica digitale
         cfuRaggiunti += 3; //inglese
-
         function updateImages() {
             const imagesContainer = document.getElementById('images-container');
             const percentageText = document.getElementById('percentage-text');
@@ -89,7 +91,7 @@
                 
                 
                 // Calcola la traslazione orizzontale per ogni immagine
-                const translateX = (i * 34.7);
+                const translateX = (i * 50);
                 img.style.transform = `translateX(${translateX}%)`;
                 
                 imagesContainer.appendChild(img);
