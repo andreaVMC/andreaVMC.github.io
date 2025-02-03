@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulazione Spaziale con Matter.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background: black; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script>
+        const { Engine, Render, World, Bodies, Mouse, MouseConstraint } = Matter;
+        
+        // Creazione del motore fisico
+        const engine = Engine.create();
+        const world = engine.world;
+
+        engine.gravity.y = 0.00;
+        engine.frictionAir = 0.00;
+        
+        // Creazione del renderer
+        const render = Render.create({
+            element: document.body,
+            engine: engine,
+            options: {
+                width: window.innerWidth,
+                height: window.innerHeight,
+                wireframes: false,
+                background: 'black'
+            }
+        });
+        
+        // Creazione dei bordi del recinto
+        const walls = [
+            Bodies.rectangle(window.innerWidth / 2, 0, window.innerWidth, 10, { isStatic: true, restitution: 1 }),
+            Bodies.rectangle(window.innerWidth / 2, window.innerHeight, window.innerWidth, 10, { isStatic: true, restitution: 1 }),
+            Bodies.rectangle(0, window.innerHeight / 2, 10, window.innerHeight, { isStatic: true, restitution: 1 }),
+            Bodies.rectangle(window.innerWidth, window.innerHeight / 2, 10, window.innerHeight, { isStatic: true, restitution: 1 })
+        ];
+        
+        // Creazione degli oggetti fluttuanti
+        const objects = [];
+        for (let i = 0; i < 30; i++) {
+            const obj = Bodies.rectangle(
+                Math.random() * window.innerWidth,
+                Math.random() * window.innerHeight,
+                120, // Larghezza del rettangolo
+                120, // Altezza del rettangolo
+                {
+                    restitution: 1,
+                    frictionAir: 0.01,
+                    inertia: 5000, // Permette di simulare una rotazione realistica
+                    force: { 
+                        x: (Math.random() * 0.15) * (Math.random() < 0.5 ? -1 : 1),
+                        y: (Math.random() * 0.15) * (Math.random() < 0.5 ? -1 : 1)
+                    },
+                    render: {
+                        sprite: {
+                            texture: "lizard.png", // Immagine da utilizzare
+                        },
+                    },
+                    chamfer: { radius: 15 } // Definisce l'angolo smussato
+                }
+            );
+            objects.push(obj);
+        }
+        
+        // Aggiunta di tutti gli elementi al mondo fisico
+        World.add(world, [...walls, ...objects]);
+        
+        // Aggiunta del controllo del mouse
+        const mouse = Mouse.create(render.canvas);
+        const mouseConstraint = MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+                stiffness: 0.1,
+                render: { visible: false }
+            }
+        });
+        World.add(world, mouseConstraint);
+        
+        // Esecuzione della simulazione
+        Engine.run(engine);
+        Render.run(render);
+        initEscapedBodiesRetrieval(objects, { x: window.innerWidth / 2, y: window.innerHeight / 2 });
+
+        // Adattamento alle dimensioni dello schermo
+        window.addEventListener("resize", () => {
+            render.canvas.width = window.innerWidth;
+            render.canvas.height = window.innerHeight;
+        });
+
+         // Funzione per applicare una forza casuale
+        function applyRandomForceToObjects() {
+            objects.forEach(obj => {
+                const forceX = Math.random() * 0.1 - 0.05; // Forza casuale tra -0.05 e 0.05
+                const forceY = Math.random() * 0.1 - 0.05; // Forza casuale tra -0.05 e 0.05
+                Body.applyForce(obj, obj.position, { x: forceX, y: forceY });
+            });
+        }
+
+        // Esegui la funzione di applicazione della forza ogni 10 secondi (10000 ms)
+        setInterval(applyRandomForceToObjects, 500);
+
+
+
+        function initEscapedBodiesRetrieval(allBodies, startCoordinates) {
+            function hasBodyEscaped(body) {
+                var x = body.position.x;
+                var y = body.position.y;
+
+                return x < 0 || x > window.innerWidth || y < 0 || y > window.innerHeight;
+            }
+
+            setInterval(function () {
+                allBodies.forEach(body => {
+                    if (hasBodyEscaped(body)) {
+                        Matter.Body.setPosition(body, { x: startCoordinates.x, y: startCoordinates.y });
+                    }
+                });
+            }, 300); // Controllo ogni 300ms
+        }
+
+    </script>
+</body>
+</html>
