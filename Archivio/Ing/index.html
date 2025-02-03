@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevingegnere</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100dvh;
+            width: 100%;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .title {
+            font-size: 80px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .images-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            width: 80%;
+            height: 200px;  /* Puoi regolare questa altezza per vedere l'overflow */
+            border: 1px solid black;
+            overflow: hidden;
+            border-radius: 200px;
+        }
+
+        .images-container img {
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            transition: transform 0.1s ease-in-out; /* Transizione per l'effetto di spostamento */
+        }
+
+        .percentage-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size:100px;
+            font-weight: bold;
+            color: black;
+        }
+    </style>
+
+    <img src="andrea.png" alt="andrea" style="width: 30%;">
+    <br />
+    <div class="title">Andrea è ingegnere al</div>
+    <div class="images-container" id="images-container">
+        <div class="percentage-text" id="percentage-text"></div>
+    </div>
+
+    <br /><br /><br />
+
+    <script>
+        let cfuRaggiunti = 0;
+        const maxCFU = 180;
+
+        // CFU
+        cfuRaggiunti += 9; // C Informatica
+        cfuRaggiunti += 9; // Elettronica digitale
+        cfuRaggiunti += 3; //inglese
+
+        function updateImages() {
+            const imagesContainer = document.getElementById('images-container');
+            const percentageText = document.getElementById('percentage-text');
+            const progressPercentage = (cfuRaggiunti / maxCFU) * 100;
+            const totalImages = Math.round(progressPercentage); // Calcola il numero di immagini da mostrare
+
+            // Pulisce la barra di immagini precedente
+            imagesContainer.innerHTML = '';
+            imagesContainer.appendChild(percentageText); // Aggiungi di nuovo la scritta
+
+            // Aggiungi le immagini
+            for (let i = 0; i < totalImages; i++) {
+                const img = document.createElement('img');
+                img.src = 'andrea_loading.png';  // Sostituisci con il percorso dell'immagine da usare
+                img.alt = 'progress image';
+                
+                
+                // Calcola la traslazione orizzontale per ogni immagine
+                const translateX = (i * 34.7);
+                img.style.transform = `translateX(${translateX}%)`;
+                
+                imagesContainer.appendChild(img);
+            }
+
+            // Aggiorna il testo con la percentuale
+            percentageText.textContent = `${Math.round(progressPercentage)}%`;
+        }
+
+        updateImages();
+    </script>
+
+</body>
+</html>
