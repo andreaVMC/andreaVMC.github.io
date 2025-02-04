@@ -8,11 +8,13 @@
     <style>
         body { margin: 0; overflow: hidden; background: black; }
         canvas { display: block; }
+        .grabbable { cursor: grab; }
+        .grabbing { cursor: grabbing; }
     </style>
 </head>
 <body>
     <script>
-        const { Engine, Render, World, Bodies, Mouse, MouseConstraint } = Matter;
+        const { Engine, Render, World, Bodies, Mouse, MouseConstraint, Events } = Matter;
         
         // Creazione del motore fisico
         const engine = Engine.create();
@@ -43,7 +45,7 @@
         
         // Creazione degli oggetti fluttuanti
         const objects = [];
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 19; i++) {
             const obj = Bodies.rectangle(
                 Math.random() * window.innerWidth,
                 Math.random() * window.innerHeight,
@@ -52,17 +54,17 @@
                 {
                     restitution: 1,
                     frictionAir: 0.01,
-                    inertia: 5000, // Permette di simulare una rotazione realistica
+                    inertia: 5000,
                     force: { 
                         x: (Math.random() * 0.15) * (Math.random() < 0.5 ? -1 : 1),
                         y: (Math.random() * 0.15) * (Math.random() < 0.5 ? -1 : 1)
                     },
                     render: {
                         sprite: {
-                            texture: "lizard.png", // Immagine da utilizzare
+                            texture: "anakin.png", 
                         },
                     },
-                    chamfer: { radius: 15 } // Definisce l'angolo smussato
+                    chamfer: { radius: 15 }
                 }
             );
             objects.push(obj);
@@ -82,6 +84,25 @@
         });
         World.add(world, mouseConstraint);
         
+        // Cambia il cursore quando passa sopra un oggetto
+        Events.on(mouseConstraint, "mousemove", function(event) {
+            const foundBodies = Matter.Query.point(objects, event.mouse.position);
+            if (foundBodies.length > 0) {
+                render.canvas.classList.add("grabbable");
+            } else {
+                render.canvas.classList.remove("grabbable");
+            }
+        });
+        
+        // Cambia il cursore quando un oggetto viene afferrato
+        Events.on(mouseConstraint, "mousedown", function() {
+            render.canvas.classList.add("grabbing");
+        });
+        
+        Events.on(mouseConstraint, "mouseup", function() {
+            render.canvas.classList.remove("grabbing");
+        });
+        
         // Esecuzione della simulazione
         Engine.run(engine);
         Render.run(render);
@@ -93,37 +114,32 @@
             render.canvas.height = window.innerHeight;
         });
 
-         // Funzione per applicare una forza casuale
+        // Funzione per applicare una forza casuale
         function applyRandomForceToObjects() {
             objects.forEach(obj => {
-                const forceX = Math.random() * 0.1 - 0.05; // Forza casuale tra -0.05 e 0.05
-                const forceY = Math.random() * 0.1 - 0.05; // Forza casuale tra -0.05 e 0.05
-                Body.applyForce(obj, obj.position, { x: forceX, y: forceY });
+                const forceX = Math.random() * 0.1 - 0.05;
+                const forceY = Math.random() * 0.1 - 0.05;
+                Matter.Body.applyForce(obj, obj.position, { x: forceX, y: forceY });
             });
         }
 
-        // Esegui la funzione di applicazione della forza ogni 10 secondi (10000 ms)
+        // Esegui la funzione di applicazione della forza ogni 500ms
         setInterval(applyRandomForceToObjects, 500);
-
-
 
         function initEscapedBodiesRetrieval(allBodies, startCoordinates) {
             function hasBodyEscaped(body) {
                 var x = body.position.x;
                 var y = body.position.y;
-
                 return x < 0 || x > window.innerWidth || y < 0 || y > window.innerHeight;
             }
-
             setInterval(function () {
                 allBodies.forEach(body => {
                     if (hasBodyEscaped(body)) {
                         Matter.Body.setPosition(body, { x: startCoordinates.x, y: startCoordinates.y });
                     }
                 });
-            }, 300); // Controllo ogni 300ms
+            }, 300);
         }
-
     </script>
 </body>
 </html>
