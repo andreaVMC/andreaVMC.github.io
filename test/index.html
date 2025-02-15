@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <script>
+    <script type="module">
         const { Engine, Render, World, Bodies, Mouse, MouseConstraint, Events } = Matter;
         
         // Creazione del motore fisico
@@ -43,33 +43,15 @@
             Bodies.rectangle(window.innerWidth, window.innerHeight / 2, 10, window.innerHeight, { isStatic: true, restitution: 1 })
         ];
         
-        // Creazione degli oggetti fluttuanti
-        const objects = [];
-        for (let i = 0; i < 15; i++) {
-            const obj = Bodies.rectangle(
-                Math.random() * window.innerWidth,
-                Math.random() * window.innerHeight,
-                120, // Larghezza del rettangolo
-                120, // Altezza del rettangolo
-                {
-                    restitution: 1,
-                    frictionAir: 0.01,
-                    inertia: 5000,
-                    force: { 
-                        x: (Math.random() * 0.15) * (Math.random() < 0.5 ? -1 : 1),
-                        y: (Math.random() * 0.15) * (Math.random() < 0.5 ? -1 : 1)
-                    },
-                    render: {
-                        sprite: {
-                            texture: "anakin.png", 
-                        },
-                    },
-                    chamfer: { radius: 15 },
-                    url: "anakin.png"
-                }
-            );
-            objects.push(obj);
-        }
+        import { anakin, generatePortfolio } from './scripts/corpi.js'; // Assicurati che il percorso sia corretto
+
+        const objects = []; // Definisci un array globale o locale dove vuoi inserire gli oggetti
+
+        // Usa lo spread operator per aggiungere ogni oggetto singolarmente
+        objects.push(...anakin(6));
+        objects.push(...generatePortfolio());
+
+        
         
         // Aggiunta di tutti gli elementi al mondo fisico
         World.add(world, [...walls, ...objects]);
@@ -96,7 +78,8 @@
         });
         
         // Registra la posizione iniziale del clic
-        // Registra la posizione iniziale del clic
+        let clickStartPosition = null;
+
         Events.on(mouseConstraint, "mousedown", function(event) {
             clickStartPosition = { x: event.mouse.position.x, y: event.mouse.position.y };
             render.canvas.classList.add("grabbing");
