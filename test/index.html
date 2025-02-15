@@ -61,10 +61,11 @@
                     },
                     render: {
                         sprite: {
-                            texture: "luca.png", 
+                            texture: "anakin.png", 
                         },
                     },
-                    chamfer: { radius: 15 }
+                    chamfer: { radius: 15 },
+                    url: "anakin.png"
                 }
             );
             objects.push(obj);
@@ -94,15 +95,34 @@
             }
         });
         
-        // Cambia il cursore quando un oggetto viene afferrato
-        Events.on(mouseConstraint, "mousedown", function() {
+        // Registra la posizione iniziale del clic
+        // Registra la posizione iniziale del clic
+        Events.on(mouseConstraint, "mousedown", function(event) {
+            clickStartPosition = { x: event.mouse.position.x, y: event.mouse.position.y };
             render.canvas.classList.add("grabbing");
         });
-        
-        Events.on(mouseConstraint, "mouseup", function() {
+
+        // Controlla se il mouse si è mosso poco e, in tal caso, esegue il reindirizzamento
+        Events.on(mouseConstraint, "mouseup", function(event) {
             render.canvas.classList.remove("grabbing");
+
+            if (clickStartPosition) {
+                const dx = event.mouse.position.x - clickStartPosition.x;
+                const dy = event.mouse.position.y - clickStartPosition.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                // Se la distanza è piccola, reindirizza l'utente
+                if (distance < 5) {  
+                    const foundBodies = Matter.Query.point(objects, event.mouse.position);
+                    if (foundBodies.length > 0) {
+                        const clickedObject = foundBodies[0];
+                        if (clickedObject.url) {
+                            window.location.href = clickedObject.url;
+                        }
+                    }
+                }
+            }
         });
-        
         // Esecuzione della simulazione
         Engine.run(engine);
         Render.run(render);
