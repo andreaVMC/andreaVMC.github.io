@@ -35,36 +35,128 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: repeat(5, 1fr);
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(3, 1fr);
             gap: 5px;
             width: 100vw;
             max-width: 95%;
         }
         .square {
-            background-color: transparent;
+            background-color: rgba(255, 255, 255, 0.137);
             aspect-ratio: 1 / 1;
         }
 
+        .library {
+            background-color: rgba(228, 54, 54, 0.8);
+            aspect-ratio: 1 / 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .library img {
+            max-width: 100%;
+            max-height: 100%;
+        }
         h1 {
             font-family: minecraft;
             text-align: center;
             font-size: 9em;
             color: blue;
         }
+        img {
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
-    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;">
-        <h1>unipr</h1>
-    </div>
     <div class="container">
+        <map name="image-map">
+            <area target="" alt="libro1" title="libro1" href="#" coords="86,133,177,352" shape="rect" onclick="console.log('Cliccato libro 1'); return false;">
+            <area target="" alt="libro2" title="libro2" href="" coords="216,174,178,353" shape="rect" onclick="console.log('Cliccato libro 2'); return false;">
+            <area target="" alt="libro3" title="libro3" href="" coords="308,134,215,352" shape="rect">
+            <area target="" alt="libro4" title="libro4" href="" coords="396,89,306,353" shape="rect">
+            <area target="" alt="libro5" title="libro5" href="" coords="397,174,398,260,442,351,534,351,533,261,488,172" shape="poly">
+            <area target="" alt="libro6" title="libro6" href="" coords="535,132,624,351" shape="rect">
+            <area target="" alt="libro7" title="libro7" href="" coords="719,173,624,353" shape="rect">
+            <area target="" alt="libro8" title="libro8" href="" coords="215,534,85,667" shape="rect">
+            <area target="" alt="libro9" title="libro9" href="" coords="309,485,215,668" shape="rect">
+            <area target="" alt="libro10" title="libro10" href="" coords="350,533,310,667" shape="rect">
+            <area target="" alt="libro11" title="libro11" href="" coords="441,533,396,532,352,579,352,666,397,665,442,625" shape="poly">
+            <area target="" alt="libro12" title="libro12" href="" coords="443,487,534,669" shape="rect">
+            <area target="" alt="libro13" title="libro13" href="" coords="535,533,579,667" shape="rect">
+            <area target="" alt="libro14" title="libro14" href="" coords="580,443,673,667" shape="rect">
+            <area target="" alt="libro15" title="libro15" href="" coords="719,487,673,667" shape="rect">
+        </map>
         <div class="grid-container">
             <script>
-                for (let i = 0; i < 60; i++) {
-                    document.write('<div class="square"></div>');
+                // Dimensioni della griglia
+                const cols = 8;
+                const rows =3;
+                // Numero di div con classe library da posizionare
+                const lb = 1; // modifica questo valore in base alle tue esigenze
+              
+                // Utilizziamo coordinate logiche: r' da 1 (fondo) a rows (alto)
+                // L’ordine desiderato è quello degli anti-diagonali:
+                // per ogni anti-diagonale (somma d = r' + c) consideriamo le celle in ordine di r' crescente.
+                let libraryCells = [];
+                let count = 0;
+                // d varia da 2 (1+1) a rows+cols (5+12)
+                for (let d = 2; d <= rows + cols; d++) {
+                  // r' varia da max(1, d - cols) a min(rows, d - 1)
+                  for (let rPrime = Math.max(1, d - cols); rPrime <= Math.min(rows, d - 1); rPrime++) {
+                    if (count < lb) {
+                      const c = d - rPrime; // colonna logica
+                      // Convertiamo r' (dove 1 è in fondo) in riga CSS (dove 1 è in alto)
+                      const actualRow = rows - rPrime + 1;
+                      libraryCells.push({ row: actualRow, col: c });
+                      count++;
+                    } else {
+                      break;
+                    }
+                  }
+                  if (count >= lb) break;
                 }
-            </script>
+              
+                // Genera la griglia: itera per righe (da 1 a rows, partendo dall'alto) e per colonne (da 1 a cols)
+                let libraryCount = 1;
+                for (let r = 1; r <= rows; r++) {
+                  for (let c = 1; c <= cols; c++) {
+                    // Controlla se la cella (r, c) deve essere una library
+                    const isLibrary = libraryCells.some(cell => cell.row === r && cell.col === c);
+                    // Definisce la classe e lo stile inline per il posizionamento nella griglia
+                    let divClass = isLibrary ? 'library' : 'square';
+                    let style = 'grid-row-start: ' + r + '; grid-column-start: ' + c + ';';
+                    
+                    if (isLibrary) {
+                      document.write('<div class="' + divClass + '" id="library-' + libraryCount++ + '" style="' + style + '">');
+                      document.write('<img src="Img/library.jpg" usemap="#image-map" alt="Library Image">');
+                      document.write('</div>');
+                    } else {
+                      document.write('<div class="' + divClass + '" style="' + style + '"></div>');
+                    }
+                  }
+                }
+
+                const img = document.querySelector('img[usemap="#image-map"]');
+                const areas = document.querySelectorAll('area');
+
+                img.onload = () => { // da mappasre correttamente l'area
+                    const imgWidth = img.offsetWidth;
+                    const imgHeight = img.offsetHeight;
+
+                    areas.forEach(area => {
+                        const coords = area.getAttribute('coords').split(',').map(coord => parseInt(coord));
+
+                        // Calcola le nuove coordinate proporzionali
+                        const newCoords = coords.map((coord, index) => {
+                            return index % 2 === 0 ? coord * imgWidth / 1000 : coord * imgHeight / 1000;  // 1000 è una dimensione fittizia iniziale
+                        });
+
+                        area.setAttribute('coords', newCoords.join(','));
+                    });
+                };
+              </script>
         </div>
     </div>
 </body>
