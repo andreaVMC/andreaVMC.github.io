@@ -138,26 +138,22 @@
                   }
                 }
 
-                const img = document.querySelector('img[usemap="#image-map"]');
-                const areas = document.querySelectorAll('area');
-
-                img.onload = () => { // da mappasre correttamente l'area
-                    const imgWidth = img.offsetWidth;
-                    const imgHeight = img.offsetHeight;
-
-                    areas.forEach(area => {
-                        const coords = area.getAttribute('coords').split(',').map(coord => parseInt(coord));
-
-                        // Calcola le nuove coordinate proporzionali
-                        const newCoords = coords.map((coord, index) => {
-                            return index % 2 === 0 ? coord * imgWidth / 1000 : coord * imgHeight / 1000;  // 1000 è una dimensione fittizia iniziale
-                        });
-
-                        area.setAttribute('coords', newCoords.join(','));
-                    });
-                };
+               
               </script>
         </div>
     </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="scripts/jquery.rwdImageMaps.min.js"></script>
+<script>
+$(document).ready(function(e) {
+	$('img[usemap]').rwdImageMaps();
+	
+	$('area').on('click', function() {
+		alert($(this).attr('alt') + ' clicked');
+	});
+});
+</script>
 </body>
 </html>
