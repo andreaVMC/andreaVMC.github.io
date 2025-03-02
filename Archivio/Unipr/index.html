@@ -21,6 +21,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            overflow-y: hidden;
         }
 
         .container{
@@ -67,34 +68,130 @@
             width: 100%;
             height: 100%;
         }
+
+        .book {
+            position: absolute;
+            z-index: 99;
+            top: 100%;
+            width: 66%;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('Img/book.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition-duration: 0.2s;
+        }
+
+        .bookNav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 10%;
+            
+        }
+        .bookNav>div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            height: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.233);
+        }
+
+        .bookContent {
+            width: 90%;
+            height: 90%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 1%;
+        }
+
+        .bookContent>div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .bookContent>div>iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            overflow: hidden !important;
+        }
+
+        .bookActions {
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+
+        .bookActions>div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            height: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+            
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <map name="image-map">
-            <area target="" alt="libro1" title="libro1" href="#" coords="86,133,177,352" shape="rect" onclick="console.log('Cliccato libro 1'); return false;">
-            <area target="" alt="libro2" title="libro2" href="" coords="216,174,178,353" shape="rect" onclick="console.log('Cliccato libro 2'); return false;">
-            <area target="" alt="libro3" title="libro3" href="" coords="308,134,215,352" shape="rect">
-            <area target="" alt="libro4" title="libro4" href="" coords="396,89,306,353" shape="rect">
-            <area target="" alt="libro5" title="libro5" href="" coords="397,174,398,260,442,351,534,351,533,261,488,172" shape="poly">
-            <area target="" alt="libro6" title="libro6" href="" coords="535,132,624,351" shape="rect">
-            <area target="" alt="libro7" title="libro7" href="" coords="719,173,624,353" shape="rect">
-            <area target="" alt="libro8" title="libro8" href="" coords="215,534,85,667" shape="rect">
-            <area target="" alt="libro9" title="libro9" href="" coords="309,485,215,668" shape="rect">
-            <area target="" alt="libro10" title="libro10" href="" coords="350,533,310,667" shape="rect">
-            <area target="" alt="libro11" title="libro11" href="" coords="441,533,396,532,352,579,352,666,397,665,442,625" shape="poly">
-            <area target="" alt="libro12" title="libro12" href="" coords="443,487,534,669" shape="rect">
-            <area target="" alt="libro13" title="libro13" href="" coords="535,533,579,667" shape="rect">
-            <area target="" alt="libro14" title="libro14" href="" coords="580,443,673,667" shape="rect">
-            <area target="" alt="libro15" title="libro15" href="" coords="719,487,673,667" shape="rect">
-        </map>
+        <!--<map name="image-map">
+            <area target="" alt="libro1" title="libro1" href="#" coords="86,133,177,352" shape="rect" onclick="handleAreaClick(1); return false;">
+            <area target="" alt="libro2" title="libro2" href="" coords="216,174,178,353" shape="rect" onclick="handleAreaClick(2); return false;">
+            <area target="" alt="libro3" title="libro3" href="" coords="308,134,215,352" shape="rect" onclick="handleAreaClick(3); return false;">
+            <area target="" alt="libro4" title="libro4" href="" coords="396,89,306,353" shape="rect" onclick="handleAreaClick(4); return false;">
+            <area target="" alt="libro5" title="libro5" href="" coords="397,174,398,260,442,351,534,351,533,261,488,172" shape="poly" onclick="handleAreaClick(5); return false;">
+            <area target="" alt="libro6" title="libro6" href="" coords="535,132,624,351" shape="rect" onclick="handleAreaClick(6); return false;">
+            <area target="" alt="libro7" title="libro7" href="" coords="719,173,624,353" shape="rect" onclick="handleAreaClick(7); return false;">
+            <area target="" alt="libro8" title="libro8" href="" coords="215,534,85,667" shape="rect" onclick="handleAreaClick(8); return false;">
+            <area target="" alt="libro9" title="libro9" href="" coords="309,485,215,668" shape="rect" onclick="handleAreaClick(9); return false;">
+            <area target="" alt="libro10" title="libro10" href="" coords="350,533,310,667" shape="rect" onclick="handleAreaClick(10); return false;">
+            <area target="" alt="libro11" title="libro11" href="" coords="441,533,396,532,352,579,352,666,397,665,442,625" shape="poly" onclick="handleAreaClick(11); return false;">
+            <area target="" alt="libro12" title="libro12" href="" coords="443,487,534,669" shape="rect" onclick="handleAreaClick(12); return false;">
+            <area target="" alt="libro13" title="libro13" href="" coords="535,533,579,667" shape="rect" onclick="handleAreaClick(13); return false;">
+            <area target="" alt="libro14" title="libro14" href="" coords="580,443,673,667" shape="rect" onclick="handleAreaClick(14); return false;">
+            <area target="" alt="libro15" title="libro15" href="" coords="719,487,673,667" shape="rect" onclick="handleAreaClick(15); return false;">
+        </map>-->
         <div class="grid-container">
             <script>
+                //run node jsonGenerator.js to update the library
+                let books = [];
+                fetch('files.json')
+                  .then(response => response.json())
+                  .then(files => {
+                      const chunkSize = 15;
+
+                      for (let i = 0; i < files.length; i += chunkSize) {
+                          books.push(files.slice(i, i + chunkSize));
+                      }
+
+                  })
+                  .catch(error => console.error("Errore nel caricamento del file JSON:", error));
+
+
                 // Dimensioni della griglia
                 const cols = 8;
                 const rows =3;
                 // Numero di div con classe library da posizionare
-                const lb = 1; // modifica questo valore in base alle tue esigenze
+                const lb = 1 // calcola il numero di librerie necessarie
               
                 // Utilizziamo coordinate logiche: r' da 1 (fondo) a rows (alto)
                 // L’ordine desiderato è quello degli anti-diagonali:
@@ -130,29 +227,147 @@
                     
                     if (isLibrary) {
                       document.write('<div class="' + divClass + '" id="library-' + libraryCount++ + '" style="' + style + '">');
-                      document.write('<img src="Img/library.jpg" usemap="#image-map" alt="Library Image">');
+                      document.write('<map name="image-map-' + libraryCount + '">');
+                      document.write('<area target="" alt="libro1" title="libro1" href="#" coords="86,133,177,352" shape="rect" onclick="handleBookClick(' + libraryCount + ', 1); return false;">');
+                      document.write('<area target="" alt="libro2" title="libro2" href="" coords="216,174,178,353" shape="rect" onclick="handleBookClick(' + libraryCount + ', 2); return false;">');
+                      document.write('<area target="" alt="libro3" title="libro3" href="" coords="308,134,215,352" shape="rect" onclick="handleBookClick(' + libraryCount + ', 3); return false;">');
+                      document.write('<area target="" alt="libro4" title="libro4" href="" coords="396,89,306,353" shape="rect" onclick="handleBookClick(' + libraryCount + ', 4); return false;">');
+                      document.write('<area target="" alt="libro5" title="libro5" href="" coords="397,174,398,260,442,351,534,351,533,261,488,172" shape="poly" onclick="handleBookClick(' + libraryCount + ', 5); return false;">');
+                      document.write('<area target="" alt="libro6" title="libro6" href="" coords="535,132,624,351" shape="rect" onclick="handleBookClick(' + libraryCount + ', 6); return false;">');
+                      document.write('<area target="" alt="libro7" title="libro7" href="" coords="719,173,624,353" shape="rect" onclick="handleBookClick(' + libraryCount + ', 7); return false;">');
+                      document.write('<area target="" alt="libro8" title="libro8" href="" coords="215,534,85,667" shape="rect" onclick="handleBookClick(' + libraryCount + ', 8); return false;">');
+                      document.write('<area target="" alt="libro9" title="libro9" href="" coords="309,485,215,668" shape="rect" onclick="handleBookClick(' + libraryCount + ', 9); return false;">');
+                      document.write('<area target="" alt="libro10" title="libro10" href="" coords="350,533,310,667" shape="rect" onclick="handleBookClick(' + libraryCount + ', 10); return false;">');
+                      document.write('<area target="" alt="libro11" title="libro11" href="" coords="441,533,396,532,352,579,352,666,397,665,442,625" shape="poly" onclick="handleBookClick(' + libraryCount + ', 11); return false;">');
+                      document.write('<area target="" alt="libro12" title="libro12" href="" coords="443,487,534,669" shape="rect" onclick="handleBookClick(' + libraryCount + ', 12); return false;">');
+                      document.write('<area target="" alt="libro13" title="libro13" href="" coords="535,533,579,667" shape="rect" onclick="handleBookClick(' + libraryCount + ', 13); return false;">');
+                      document.write('<area target="" alt="libro14" title="libro14" href="" coords="580,443,673,667" shape="rect" onclick="handleBookClick(' + libraryCount + ', 14); return false;">');
+                      document.write('<area target="" alt="libro15" title="libro15" href="" coords="719,487,673,667" shape="rect" onclick="handleBookClick(' + libraryCount + ', 15); return false;">');
+                      document.write('</map>');
+                      document.write('<img src="Img/library.jpg" usemap="#image-map-' + libraryCount + '" alt="Library Image" class="library-img" onclick="console.log(\'Cliccato library ' + (libraryCount - 1) + '\');">');
                       document.write('</div>');
+
+                      /*document.write('<div class="' + divClass + '" id="library-' + libraryCount++ + '" style="' + style + '">');
+                      document.write('<img src="Img/library.jpg" usemap="#image-map-'+libraryCount+'" alt="Library Image" class="library-img" onclick="console.log(\'Cliccato library ' + (libraryCount - 1) + '\');">');
+                      document.write('</div>');*/
                     } else {
                       document.write('<div class="' + divClass + '" style="' + style + '"></div>');
                     }
                   }
                 }
 
-               
+
+                function handleBookClick(library, book) {
+                  library -= 1;
+                  if (!books[library - 1] || !books[library - 1][book - 1]) {
+                    return;
+                  }
+                  console.log(books[library - 1][book - 1]);
+                  const bookElement = document.querySelector('.book');
+
+                  const page1 = document.querySelector('.page_1');
+                  const page2 = document.querySelector('.page_2');
+                  const download = document.querySelector('.download');
+
+                  download.onclick = function() {
+                    const bookPath = 'docs/' + books[library - 1][book - 1] + '.pdf';
+                    const link = document.createElement('a');
+                    link.href = bookPath;
+                    link.download = bookPath.split('/').pop();
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  };
+
+                  const bookPath = 'docs/' + books[library - 1][book - 1] + '.pdf';
+
+                  page1.src = bookPath + '#page=1&toolbar=0&scrollbar=0&view=FitV';
+                  page2.src = bookPath + '#page=2&toolbar=0&scrollbar=0&view=FitV';
+
+                  page1.dataset.currentPage = 1;
+                  page2.dataset.currentPage = 2;
+
+                  bookElement.style.top = '5%';
+                }
+
+                function closeBook() {
+                    const bookElement = document.querySelector('.book');
+                    bookElement.style.top = '100%';
+                }
+
+                function previusPage() {
+                    const page1 = document.querySelector('.page_1');
+                    const page2 = document.querySelector('.page_2');
+
+                    let currentPage1 = parseInt(page1.dataset.currentPage);
+                    let currentPage2 = parseInt(page2.dataset.currentPage);
+
+                    if (currentPage1 > 1) {
+                        page1.src = page1.src.replace('#page=' + currentPage1, '#page=' + (currentPage1 - 2));
+                        page2.src = page2.src.replace('#page=' + currentPage2, '#page=' + (currentPage2 - 2));
+
+                        page1.dataset.currentPage = currentPage1 - 2;
+                        page2.dataset.currentPage = currentPage2 - 2;
+
+                        page1.contentWindow.location.reload();
+                        page2.contentWindow.location.reload();
+                    }
+                }
+
+                function nextPage() {
+                    const page1 = document.querySelector('.page_1');
+                    const page2 = document.querySelector('.page_2');
+
+                    let currentPage1 = parseInt(page1.dataset.currentPage);
+                    let currentPage2 = parseInt(page2.dataset.currentPage);
+
+                    page1.src = page1.src.replace('#page=' + currentPage1, '#page=' + (currentPage1 + 2));
+                    page2.src = page2.src.replace('#page=' + currentPage2, '#page=' + (currentPage2 + 2));
+
+                    page1.dataset.currentPage = currentPage1 + 2;
+                    page2.dataset.currentPage = currentPage2 + 2;
+
+                    page1.contentWindow.location.reload();
+                    page2.contentWindow.location.reload();
+                }
+                
               </script>
+        </div>
+        <div class="book">
+          <div class="bookNav">
+            <div>
+              <img src="Img/download.png" alt="book" style="width: 50px; height: 50px;" class="download">
+            </div>
+            <div>
+              <img src="Img/close.png" alt="book" style="width: 50px; height: 50px;" onclick="closeBook();">
+            </div>
+          </div>
+          <div class="bookContent">
+            <div>
+              <iframe class="page_1" style="overflow: hidden;"></iframe>
+            </div>
+            
+            <div>
+              <iframe class="page_2"></iframe>
+            </div>
+          </div>
+          <div class="bookActions">
+            <div>
+              <img src="Img/page_action.png" style="transform: rotate(90deg);" alt="book" style="width: 50px; height: 50px;" onclick="previusPage();">
+            </div>
+            <div>
+                <img src="Img/page_action.png" style="transform: rotate(270deg) scaleX(-1);" alt="book" style="width: 50px; height: 50px;" onclick="nextPage();">
+            </div>
+          </div>
         </div>
     </div>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="scripts/jquery.rwdImageMaps.min.js"></script>
 <script>
 $(document).ready(function(e) {
 	$('img[usemap]').rwdImageMaps();
-	
-	$('area').on('click', function() {
-		alert($(this).attr('alt') + ' clicked');
-	});
 });
 </script>
 </body>
