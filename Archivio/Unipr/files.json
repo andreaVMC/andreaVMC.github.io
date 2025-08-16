@@ -1,10 +1,13 @@
 [
-  "algebra e geometria\\Algebra_e_Geometria_libro",
-  "analisi_1\\Analisi_1",
-  "analisi_1\\Appunti_lezione_analisi1",
-  "analisi_1\\Appunti_per_analisi1_orale",
-  "elettronica_digitale\\Elettronica_teoria",
-  "elettronica_digitale\\EsameElettronica9CFu",
-  "probabilistica\\esercizi metodi_250227_104917",
-  "probabilistica\\Metodi probabilistici_250227_104732"
+  "algebra e geometria/Algebra_e_Geometria_libro",
+  "analisi_1/Analisi_1",
+  "analisi_1/Appunti_lezione_analisi1",
+  "analisi_1/Appunti_per_analisi1_orale",
+  "elettronica_digitale/Elettronica_teoria",
+  "elettronica_digitale/EsameElettronica9CFu",
+  "fisica_1/Esercizi",
+  "fisica_1/Formulario",
+  "fisica_1/teoria",
+  "probabilistica/Metodi probabilistici_250227_104732",
+  "probabilistica/esercizi metodi_250227_104917"
 ]
