@@ -43,12 +43,13 @@
             Bodies.rectangle(window.innerWidth, window.innerHeight / 2, 10, window.innerHeight, { isStatic: true, restitution: 1 })
         ];
         
-        import { anakin, generatePortfolio } from './scripts/corpi.js'; // Assicurati che il percorso sia corretto
+        import { anakin, anakin2, generatePortfolio } from './scripts/corpi.js'; // Assicurati che il percorso sia corretto
 
         const objects = []; // Definisci un array globale o locale dove vuoi inserire gli oggetti
 
         // Usa lo spread operator per aggiungere ogni oggetto singolarmente
-        objects.push(...anakin(6));
+        objects.push(...anakin(4));
+        objects.push(...anakin2(3));
         objects.push(...generatePortfolio());
 
         

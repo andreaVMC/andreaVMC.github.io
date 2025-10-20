@@ -1,5 +1,11 @@
 [
   "algebra e geometria/Algebra_e_Geometria_libro",
+  "algebra e geometria/Diagonalizzazione",
+  "algebra e geometria/Esame",
+  "algebra e geometria/PDF lezioni",
+  "algebra e geometria/Recupero teoria + pratica",
+  "algebra e geometria/Spazi e sotto vet.",
+  "algebra e geometria/quiz",
   "analisi_1/Analisi_1",
   "analisi_1/Appunti_lezione_analisi1",
   "analisi_1/Appunti_per_analisi1_orale",
@@ -9,5 +15,6 @@
   "fisica_1/Formulario",
   "fisica_1/teoria",
   "probabilistica/Metodi probabilistici_250227_104732",
+  "probabilistica/Probabilità",
   "probabilistica/esercizi metodi_250227_104917"
 ]
